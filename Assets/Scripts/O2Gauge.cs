@@ -81,7 +81,6 @@ public class O2Gauge : MonoBehaviour {
 
         Gauge -= dropParam * Time.deltaTime;
         text.text = (int)(GaugePersentage * 100) + "%";
-
     }
 
     public void O2GaugePopUp()

@@ -23498,7 +23498,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &612034608
 GameObject:
@@ -29873,7 +29873,6 @@ MonoBehaviour:
   btnInvenCall: {fileID: 864053198}
   btnLightPanel: {fileID: 1181951272}
   ItemPopup: {fileID: 1751038497}
-  objCameraSystem: {fileID: 740854541}
   moveTime: 0.4
   dialogue:
     name: 
@@ -30810,17 +30809,17 @@ PrefabInstance:
     - target: {fileID: 224960426267135866, guid: 56f890eb9b9b1ba4498514a43436e04a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224960426267135866, guid: 56f890eb9b9b1ba4498514a43436e04a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224960426267135866, guid: 56f890eb9b9b1ba4498514a43436e04a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56f890eb9b9b1ba4498514a43436e04a, type: 3}
@@ -32760,7 +32759,7 @@ RectTransform:
   m_GameObject: {fileID: 860249173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 52867632}
   - {fileID: 941456406}
@@ -38082,7 +38081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &981394900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54646,7 +54645,7 @@ RectTransform:
   m_GameObject: {fileID: 1431589014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 714973304}
   - {fileID: 1298586405}
@@ -55417,8 +55416,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1464730076
-RectTransform:
+--- !u!4 &1464730076
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -55426,16 +55425,11 @@ RectTransform:
   m_GameObject: {fileID: 1464730075}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.04375, y: 1.04375, z: 1.04375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 589.85, y: 297.00003}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464730077
 MonoBehaviour:
   m_ObjectHideFlags: 0

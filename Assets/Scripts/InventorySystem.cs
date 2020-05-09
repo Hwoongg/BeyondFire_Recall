@@ -69,7 +69,6 @@ public class InventorySystem : MonoBehaviour
 
 
     // 카메라 뷰포트 조작용 카메라 시스템
-    public GameObject objCameraSystem;
     private CameraSystem cameraSystem;
     public float moveTime;
     float fTempDeltatime; // 인벤토리 움직임에 필요한 dTime 백업용
@@ -88,7 +87,8 @@ public class InventorySystem : MonoBehaviour
 
     private void Start()
     {
-        cameraSystem = objCameraSystem.GetComponent<CameraSystem>();
+        cameraSystem = FindObjectOfType<CameraSystem>();
+
         state = State.DISABLE;
         imageLightPanel = btnLightPanel.GetComponent<Image>();
 
