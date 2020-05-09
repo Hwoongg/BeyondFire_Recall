@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Fireman_FatherRescue
+  m_Controller: {fileID: 9100000, guid: a43bd2c99aaf22345b1c92d91b8596f9, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 028ed0ff6a557d84cac6008dde3c3351, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2d1aa9880888ab740a9594a4e805fcaa, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d934264cdff166848bfc91c48b8d2ca7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2d1aa9880888ab740a9594a4e805fcaa, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fcc2e7d90f9a2af479b23bcac0b116b9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e718a4ef18b9a4a4c9dfac54befbf411, type: 2}
