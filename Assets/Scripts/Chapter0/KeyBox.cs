@@ -29,7 +29,7 @@ public class KeyBox : ItemSystem {
     IEnumerator KeyBoxEvent()
     {
         prologueEvents = objPrologueEvent.GetComponent<PrologueEvents>();
-        FindObjectOfType<CharacterMover>().CharacterAnimator.SetBool("IsBack", true);
+        FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", true);
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
 
@@ -52,7 +52,7 @@ public class KeyBox : ItemSystem {
 
         gameObject.SetActive(true);
 
-        FindObjectOfType<CharacterMover>().CharacterAnimator.SetBool("IsBack", false);
+        FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", false);
         yield break;
     }
 }

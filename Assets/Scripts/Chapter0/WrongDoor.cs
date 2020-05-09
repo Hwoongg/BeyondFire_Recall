@@ -71,7 +71,7 @@ public class WrongDoor : InteractionSystem
         playerCharacter.transform.position = new Vector3(63.7f, -7.0f, 0);
         // 우측방향, 앉기 세팅
         playerCharacter.transform.localScale = new Vector3(1, 1, 1);
-        playerCharacter.GetComponent<CharacterMover>().CharacterAnimator.SetBool("IsSit", true);
+        playerCharacter.GetComponent<CharacterMover>().myAnimator.SetBool("IsSit", true);
         FindObjectOfType<CameraSystem>().changeViewport();
 
         // 불+연기 세팅
@@ -107,7 +107,7 @@ public class WrongDoor : InteractionSystem
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
 
         // 기립 상태
-        playerCharacter.GetComponent<CharacterMover>().CharacterAnimator.SetBool("IsSit", false);
+        playerCharacter.GetComponent<CharacterMover>().myAnimator.SetBool("IsSit", false);
 
         yield break;
     }

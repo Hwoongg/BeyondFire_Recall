@@ -73,8 +73,8 @@ public class PrologueEvents : MonoBehaviour {
         characterMover.moveType = CharacterMover.MoveType.NONE;
 
         Character.transform.localScale = new Vector3(-1, 1, 1);
-        characterMover.CharacterAnimator.SetBool("IsWalk", false);
-        characterMover.CharacterAnimator.SetBool("IsSit", true);
+        characterMover.myAnimator.SetBool("IsWalk", false);
+        characterMover.myAnimator.SetBool("IsSit", true);
 
         // 페이드 인 효과
         objFadeEfx.SetActive(true);
@@ -96,7 +96,7 @@ public class PrologueEvents : MonoBehaviour {
 
         // 페이드 아웃 인
         FadeEfx.FadeOut();
-        characterMover.CharacterAnimator.SetBool("IsSit", false);
+        characterMover.myAnimator.SetBool("IsSit", false);
         yield return new WaitForSeconds(1.2f);
         FadeEfx.FadeIn();
 
@@ -126,7 +126,7 @@ public class PrologueEvents : MonoBehaviour {
     {
         // 플레이어 이동상태 잠금
         characterMover.moveType = CharacterMover.MoveType.NONE;
-        characterMover.CharacterAnimator.SetBool("IsWalk", false);
+        characterMover.myAnimator.SetBool("IsWalk", false);
         // 문 상호작용법 튜토리얼
         tutorialPanel.OnCenter();
         // 폰트 색 시스템 메시지 색상으로 변경
@@ -149,7 +149,7 @@ public class PrologueEvents : MonoBehaviour {
     {
         // 양방향 계단 튜토리얼
         characterMover.moveType = CharacterMover.MoveType.NONE;
-        characterMover.CharacterAnimator.SetBool("IsWalk", false);
+        characterMover.myAnimator.SetBool("IsWalk", false);
 
         tutorialPanel.OnTopBottom();
         dialogueManager.nameText.color = new Color(0.2f, 0.6f, 1);

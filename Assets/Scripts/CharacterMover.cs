@@ -85,8 +85,7 @@ public class CharacterMover : MonoBehaviour
     //
     // 최대한 이동에 관련된 것들만 넣을 수 있도록...
     //
-
-    public GameObject Character;
+    
 
     public enum MoveType
     {
@@ -97,13 +96,11 @@ public class CharacterMover : MonoBehaviour
     [HideInInspector]
     public MoveType moveType;
     // private 전환, getComponent 하는편이 깔끔할 듯
-    public Rigidbody2D CharacterRigidbody;
-    public Animator CharacterAnimator;
+    public Animator myAnimator;
 
     // 머리 위 아이콘에 대한 변수들... 컴포넌트 분리할지 고려중
     public GameObject Icon;
-    [HideInInspector]
-    public Animator IconAnimator; // 아이콘 표기를 위한 애니메이터
+    [HideInInspector] public Animator IconAnimator; // 아이콘 표기를 위한 애니메이터
 
 
     // 이동속도 관련 파라미터
@@ -122,15 +119,14 @@ public class CharacterMover : MonoBehaviour
         DASH,
         RESCUE
     }
-    [HideInInspector]
-    public CharState charState;
-    [HideInInspector]
-    public CharState beforeState;
+    [HideInInspector] public CharState charState;
+    [HideInInspector] public CharState beforeState;
 
 
     void Start()
     {
         IconAnimator = Icon.GetComponent<Animator>();
+        myAnimator = GetComponent<Animator>();
         moveType = MoveType.COMMANDMOVE;
         InputDelay = 0;
         IsDash = false;
@@ -141,10 +137,7 @@ public class CharacterMover : MonoBehaviour
 
     void Update()
     {
-        // GetAxis는 키보드 방향키나 WASD 키 입력에 대해 +1 혹은 -1로 리턴한다.
-        //float x = Input.GetAxis("Horizontal") * Time.deltaTime * MoveSpeed;
-        //float z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
-
+        
         // 상태에 따른 지속적인 HP 감소를 위해 상태 변수를 계속해서 체크해줄 필요가 있습니다.
         // 이동하고있지 않을 시 이전 상태로 돌립니다.
         if(!keyLeftMove && !keyRightMove)
@@ -157,11 +150,11 @@ public class CharacterMover : MonoBehaviour
             case MoveType.NONE:
                 break;
 
-            case MoveType.COMMANDMOVE:
+            case MoveType.COMMANDMOVE: // 플레이어 조작으로 이동
                 CommandMove();
                 break;
 
-            case MoveType.AUTOMOVE:
+            case MoveType.AUTOMOVE: // 타 스크립트에 의해 자동으로 이동
                 AutoMove();
                 break;
         }
@@ -186,36 +179,32 @@ public class CharacterMover : MonoBehaviour
                 break;
         }
 
-        if (Input.GetKey(KeyCode.D) || keyRightMove)
+        if (keyRightMove)
         {
             float x = 1 * Time.deltaTime * moveSpeed;
-            Character.transform.Translate(x, 0, 0);
+            transform.Translate(x, 0, 0);
 
 
-            Character.transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-1, 1, 1);
             Icon.transform.localScale = new Vector3(-1, 1, 1);
-            CharacterAnimator.SetBool("IsWalk", true);
+            myAnimator.SetBool("IsWalk", true);
         }
-        else if (Input.GetKey(KeyCode.A) || keyLeftMove)
+        else if (keyLeftMove)
         {
 
             float x = -1 * Time.deltaTime * moveSpeed;
-            Character.transform.Translate(x, 0, 0);
+            transform.Translate(x, 0, 0);
 
 
-            Character.transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(1, 1, 1);
             Icon.transform.localScale = new Vector3(1, 1, 1);
-            CharacterAnimator.SetBool("IsWalk", true);
+            myAnimator.SetBool("IsWalk", true);
         }
         else
         {
-            CharacterAnimator.SetBool("IsWalk", false);
+            myAnimator.SetBool("IsWalk", false);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CharacterRigidbody.AddForce(new Vector3(0, JumpHeight, 0));
-        }
+        
     }
 
     // 사용자 입력을 받지 않는 자동 이동
@@ -368,16 +357,9 @@ public class CharacterMover : MonoBehaviour
         IconAnimator.SetBool("onHelp", false);
         IconAnimator.SetBool("onExit", false);
     }
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    Debug.Log("Mover의 Stay 이벤트 발생");
-    //}
 
 
-
-
-
-
+    
     //////////////////////////////////////////////////////////////////////////
     //
     // 버튼 OnClick에서 호출될 함수들...
@@ -432,13 +414,6 @@ public class CharacterMover : MonoBehaviour
             charState = CharState.DASH;
         }
         InputDelay = Time.time;
-
-        //float x = 1 * Time.deltaTime * MoveSpeed;
-
-        //Character.transform.Translate(x, 0, 0);
-        //Character.transform.localScale = new Vector3(-1, 1, 1);
-        //Icon.transform.localScale = new Vector3(-1, 1, 1);
-        //CharacterAnimator.SetBool("IsWalk", true);
     }
 
 }

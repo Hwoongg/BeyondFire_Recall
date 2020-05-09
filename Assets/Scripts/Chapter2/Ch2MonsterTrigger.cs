@@ -44,7 +44,7 @@ public class Ch2MonsterTrigger : MonoBehaviour
     {
         // 이동 불가 상태
         characterMover.moveType = CharacterMover.MoveType.NONE;
-        characterMover.CharacterAnimator.SetBool("IsWalk", false);
+        characterMover.myAnimator.SetBool("IsWalk", false);
 
         //// 괴물 움직임 코루틴 시작
         //StartCoroutine(monsterControl);
