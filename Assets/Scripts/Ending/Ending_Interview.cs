@@ -29,19 +29,19 @@ public class Ending_Interview : MonoBehaviour
         objFadeEfx.GetComponent<FadeEffect>().FadeIn();
 
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         objCG1.SetActive(false);
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue2);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         objCG2.SetActive(false);
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue3);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         objCG3.SetActive(false);
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue4);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         objFadeEfx.GetComponent<FadeEffect>().FadeOut();
 

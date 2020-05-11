@@ -21,20 +21,20 @@ public class Ending_Socialphobia : MonoBehaviour
     }
     IEnumerator MainRoutine()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(fadeDialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(fadeDialogue);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         
         objFadeEfx.SetActive(true);
         objBlack.SetActive(false);
         objFadeEfx.GetComponent<FadeEffect>().FadeIn();
 
-        FindObjectOfType<DialogueManager>().StartDialogue(beforeDialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(beforeDialogue);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         objAfterCG.SetActive(true);
-        FindObjectOfType<DialogueManager>().StartDialogue(afterDialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(afterDialogue);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         
         objFadeEfx.GetComponent<FadeEffect>().FadeOut();

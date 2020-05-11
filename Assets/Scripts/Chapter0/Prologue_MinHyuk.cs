@@ -34,38 +34,38 @@ public class Prologue_MinHyuk : InteractionSystem
 
     IEnumerator TalkRoutine()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(JH1);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH1);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(MH1);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(MH1);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JH2);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH2);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(MH2);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(MH2);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JH3);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH3);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(MH3);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(MH3);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JH4);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH4);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(MH4);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(MH4);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JH5);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH5);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(MH5);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(MH5);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JH6);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH6);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         yield break;
     }

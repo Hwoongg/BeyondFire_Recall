@@ -283,7 +283,7 @@ public class InventorySystem : MonoBehaviour
         // 꽉차있는경우
         if(_itemSlot.iItemCount > 2)
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            DialogueManager.Instance().StartDialogue(dialogue);
             return false;
         }
 

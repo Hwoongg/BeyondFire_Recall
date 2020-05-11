@@ -38,7 +38,7 @@ public class Ch3_Father : InteractionSystem
     IEnumerator Routine()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         playerAnimator.runtimeAnimatorController = fatherAnimator;
         player.GetComponent<CharacterMover>().beforeState = CharacterMover.CharState.RESCUE;

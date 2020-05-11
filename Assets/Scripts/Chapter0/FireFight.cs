@@ -53,23 +53,23 @@ public class FireFight : InteractionSystem {
         objCG.SetActive(true);
 
         // 대화1
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue1);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         // 대화2 
         objCGJH.GetComponent<Image>().sprite = JH1;
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue2);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue2);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         // 대화3 
         objCGJH.GetComponent<Image>().sprite = JH2;
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue3);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue3);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         // 대화4
         objCGFire.GetComponent<Image>().sprite = FireCG1;
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue4);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue4);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         objFadeEfx.SetActive(true);
         fadeEfx.FadeOut();

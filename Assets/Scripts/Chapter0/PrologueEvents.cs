@@ -51,7 +51,7 @@ public class PrologueEvents : MonoBehaviour {
 
         characterMover = Character.GetComponent<CharacterMover>();
         FadeEfx = objFadeEfx.GetComponent<FadeEffect>();
-        dialogueManager = objDialogueManager.GetComponent<DialogueManager>();
+        dialogueManager = DialogueManager.Instance();
         //DialogueBox = dialogueManager.objDialogueBox;
         LibDialogue = objLibDialogue.GetComponent<DialogueTrigger>();
         LibDialogue2 = objLibDialogue2.GetComponent<DialogueTrigger>();
@@ -86,13 +86,13 @@ public class PrologueEvents : MonoBehaviour {
         // 수진이 플레이어를 부르는 대화 시작
         //LibDialogue.TriggerDialogue();
         dialogueManager.StartDialogue(Sujin1);
-        yield return new WaitUntil(()=> dialogueManager.objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(()=> dialogueManager.canvasObj.activeSelf == false);
         dialogueManager.StartDialogue(JinHyung1);
-        yield return new WaitUntil(() => dialogueManager.objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
         dialogueManager.StartDialogue(Sujin2);
-        yield return new WaitUntil(() => dialogueManager.objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
         dialogueManager.StartDialogue(JinHyung2);
-        yield return new WaitUntil(() => dialogueManager.objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
 
         // 페이드 아웃 인
         FadeEfx.FadeOut();
@@ -104,16 +104,16 @@ public class PrologueEvents : MonoBehaviour {
         // 튜토리얼 패널 좌우 활성화 + 설명 다이얼로그 출력
         tutorialPanel.OnLeftRight();
         // 폰트 색 시스템 메시지 색상으로 변경
-        dialogueManager.nameText.color = new Color(0.2f, 0.6f, 1);
-        dialogueManager.dialogueText.color = new Color(0.2f, 0.6f, 1);
-        dialogueManager.dialogueText.alignment = TextAnchor.UpperCenter;
+        dialogueManager.textTalker.color = new Color(0.2f, 0.6f, 1);
+        dialogueManager.textSentence.color = new Color(0.2f, 0.6f, 1);
+        dialogueManager.textSentence.alignment = TextAnchor.UpperCenter;
         LibDialogue2.TriggerDialogue();
-        yield return new WaitUntil(() => dialogueManager.objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
 
         tutorialPanel.OffLeftRight();
-        dialogueManager.nameText.color = new Color(1, 1, 1);
-        dialogueManager.dialogueText.color = new Color(1, 1, 1);
-        dialogueManager.dialogueText.alignment = TextAnchor.UpperLeft;
+        dialogueManager.textTalker.color = new Color(1, 1, 1);
+        dialogueManager.textSentence.color = new Color(1, 1, 1);
+        dialogueManager.textSentence.alignment = TextAnchor.UpperLeft;
 
         characterMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
 
@@ -130,15 +130,15 @@ public class PrologueEvents : MonoBehaviour {
         // 문 상호작용법 튜토리얼
         tutorialPanel.OnCenter();
         // 폰트 색 시스템 메시지 색상으로 변경
-        dialogueManager.nameText.color = new Color(0.2f, 0.6f, 1);
-        dialogueManager.dialogueText.color = new Color(0.2f, 0.6f, 1);
-        dialogueManager.dialogueText.alignment = TextAnchor.UpperCenter;
+        dialogueManager.textTalker.color = new Color(0.2f, 0.6f, 1);
+        dialogueManager.textSentence.color = new Color(0.2f, 0.6f, 1);
+        dialogueManager.textSentence.alignment = TextAnchor.UpperCenter;
         DoorDialogue.TriggerDialogue();
-        yield return new WaitUntil(() => dialogueManager.objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
         tutorialPanel.OffCenter();
-        dialogueManager.nameText.color = new Color(1, 1, 1);
-        dialogueManager.dialogueText.color = new Color(1, 1, 1);
-        dialogueManager.dialogueText.alignment = TextAnchor.UpperLeft;
+        dialogueManager.textTalker.color = new Color(1, 1, 1);
+        dialogueManager.textSentence.color = new Color(1, 1, 1);
+        dialogueManager.textSentence.alignment = TextAnchor.UpperLeft;
 
         characterMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
         yield break;
@@ -152,16 +152,16 @@ public class PrologueEvents : MonoBehaviour {
         characterMover.myAnimator.SetBool("IsWalk", false);
 
         tutorialPanel.OnTopBottom();
-        dialogueManager.nameText.color = new Color(0.2f, 0.6f, 1);
-        dialogueManager.dialogueText.color = new Color(0.2f, 0.6f, 1);
-        dialogueManager.dialogueText.alignment = TextAnchor.UpperCenter;
+        dialogueManager.textTalker.color = new Color(0.2f, 0.6f, 1);
+        dialogueManager.textSentence.color = new Color(0.2f, 0.6f, 1);
+        dialogueManager.textSentence.alignment = TextAnchor.UpperCenter;
         // 튜토리얼 메시지 시작
         StairDialogue.TriggerDialogue();
-        yield return new WaitUntil(() => dialogueManager.objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
         tutorialPanel.OffTopBottom();
-        dialogueManager.nameText.color = new Color(1, 1, 1);
-        dialogueManager.dialogueText.color = new Color(1, 1, 1);
-        dialogueManager.dialogueText.alignment = TextAnchor.UpperLeft;
+        dialogueManager.textTalker.color = new Color(1, 1, 1);
+        dialogueManager.textSentence.color = new Color(1, 1, 1);
+        dialogueManager.textSentence.alignment = TextAnchor.UpperLeft;
 
         characterMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
         yield break;
@@ -173,20 +173,21 @@ public class PrologueEvents : MonoBehaviour {
         characterMover.moveType = CharacterMover.MoveType.NONE;
         tutorialPanel.OnInven();
 
-        dialogueManager.nameText.color = new Color(0.2f, 0.6f, 1);
-        dialogueManager.dialogueText.color = new Color(0.2f, 0.6f, 1);
-        dialogueManager.dialogueText.alignment = TextAnchor.UpperCenter;
+        dialogueManager.textTalker.color = new Color(0.2f, 0.6f, 1);
+        dialogueManager.textSentence.color = new Color(0.2f, 0.6f, 1);
+        dialogueManager.textSentence.alignment = TextAnchor.UpperCenter;
         dialogueManager.StartDialogue(TutoInven);
-        yield return new WaitUntil(() => dialogueManager.objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
         tutorialPanel.OffInven();
-        dialogueManager.nameText.color = new Color(1, 1, 1);
-        dialogueManager.dialogueText.color = new Color(1, 1, 1);
-        dialogueManager.dialogueText.alignment = TextAnchor.UpperLeft;
+        dialogueManager.textTalker.color = new Color(1, 1, 1);
+        dialogueManager.textSentence.color = new Color(1, 1, 1);
+        dialogueManager.textSentence.alignment = TextAnchor.UpperLeft;
 
         characterMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
 
         yield break;
     }
+
     //public IEnumerator TeachersLoungeEvent()
     //{
 

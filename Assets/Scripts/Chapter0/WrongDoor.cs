@@ -60,8 +60,8 @@ public class WrongDoor : InteractionSystem
     IEnumerator NextEventSetting()
     {
         // 열쇠가 안맞는 대사 출력
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue1);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         // 페이드 아웃
         fadeEfx.FadeOut();
@@ -100,11 +100,11 @@ public class WrongDoor : InteractionSystem
 
         yield return new WaitForSeconds(2.0f);
         fadeEfx.FadeIn();
-        
+
 
         // 뭔가 이상함을 느낀 대사
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue2);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue2);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         // 기립 상태
         playerCharacter.GetComponent<CharacterMover>().myAnimator.SetBool("IsSit", false);

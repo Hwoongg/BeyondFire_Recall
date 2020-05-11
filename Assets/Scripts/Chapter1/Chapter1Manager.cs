@@ -120,7 +120,7 @@ public class Chapter1Manager : MonoBehaviour
     IEnumerator PartnerEvent()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(PartnerDialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         float nowLerp = 0.0f;
         Vector3 nowPartnerCoord;

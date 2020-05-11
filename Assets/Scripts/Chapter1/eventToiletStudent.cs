@@ -25,7 +25,7 @@ public class eventToiletStudent : InteractionSystem
     IEnumerator ToiletStudentEvent()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         DestroyObject(gameObject);
         yield break;

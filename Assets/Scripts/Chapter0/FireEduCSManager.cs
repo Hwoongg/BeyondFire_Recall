@@ -103,17 +103,17 @@ public class FireEduCSManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(Talk1);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(Talk1);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(Talk2);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(Talk2);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(Talk3);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(Talk3);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(Talk4);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(Talk4);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         yield return new WaitForSeconds(0.5f);
         objFadeEfx.GetComponent<FadeEffect>().FadeOut();

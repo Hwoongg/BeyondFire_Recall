@@ -29,7 +29,7 @@ public class itemAVKey : ItemSystem
     {
         FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", true);
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
 
         FindObjectOfType<InventorySystem>().AddItem(this);

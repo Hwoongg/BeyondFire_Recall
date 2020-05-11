@@ -34,7 +34,7 @@ public class eventHelpJH :InteractionSystem {
     IEnumerator HelpJHEvent()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         // 페이드 아웃
         FindObjectOfType<FadeEffect>().FadeOut();

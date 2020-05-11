@@ -35,8 +35,8 @@ public class FireFocus : DialogueTrigger
 
 
         // 대사 출력
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
         
         
 

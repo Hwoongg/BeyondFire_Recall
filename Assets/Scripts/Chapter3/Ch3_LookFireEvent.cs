@@ -36,7 +36,7 @@ public class Ch3_LookFireEvent : MonoBehaviour
         player.transform.localScale = new Vector3(1, 1, 1);
 
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         FindObjectOfType<CharacterMover>().moveType = CharacterMover.MoveType.COMMANDMOVE;
         yield break;

@@ -32,8 +32,8 @@ public class eventAVDoor :InteractionSystem
 
     IEnumerator HasAVKeyEvent()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogueKeyHas);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogueKeyHas);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         GetComponent<NormalDoorInteraction>().enabled = true;
         Destroy(this);
@@ -42,7 +42,7 @@ public class eventAVDoor :InteractionSystem
 
     IEnumerator notHasAVKeyEvent()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogueKeyNotHas);
+        DialogueManager.Instance().StartDialogue(dialogueKeyNotHas);
         yield break;
     }
 }

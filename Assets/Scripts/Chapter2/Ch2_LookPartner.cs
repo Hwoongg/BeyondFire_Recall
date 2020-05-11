@@ -55,7 +55,7 @@ public class Ch2_LookPartner : InteractionSystem
         objCGTop.GetComponent<Image>().sprite = LookPartnerCG;
 
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         objCGTop.SetActive(false);
         objCG.SetActive(false);

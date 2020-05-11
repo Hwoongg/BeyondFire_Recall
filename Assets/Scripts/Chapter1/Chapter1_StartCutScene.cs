@@ -23,12 +23,12 @@ public class Chapter1_StartCutScene : MonoBehaviour {
     {
         objFadeEfx.SetActive(true);
         fadeEfx.FadeIn();
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue1);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         objSiren.SetActive(true);
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue2);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue2);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         
         fadeEfx.FadeOut();

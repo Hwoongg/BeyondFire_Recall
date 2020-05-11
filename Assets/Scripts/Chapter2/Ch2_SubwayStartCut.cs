@@ -47,17 +47,17 @@ public class Ch2_SubwayStartCut : MonoBehaviour {
         objFadeEfx.SetActive(true);
         objFadeEfx.GetComponent<FadeEffect>().FadeIn();
 
-        DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
+        DialogueManager dialogueManager = DialogueManager.Instance();
 
         dialogueManager.StartDialogue(BeforeDialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
 
 
         // 이미지 추가 활성화
         objAfterCG.SetActive(true);
 
         dialogueManager.StartDialogue(AfterDialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
 
 
         // 다 끝나면 페이드아웃

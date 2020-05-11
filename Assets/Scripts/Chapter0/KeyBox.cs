@@ -30,8 +30,8 @@ public class KeyBox : ItemSystem {
     {
         prologueEvents = objPrologueEvent.GetComponent<PrologueEvents>();
         FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", true);
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(dialogue);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         yield return StartCoroutine(prologueEvents.InvenTutorial());
 

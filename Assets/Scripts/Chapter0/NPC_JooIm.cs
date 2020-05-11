@@ -35,41 +35,41 @@ public class NPC_JooIm : InteractionSystem
 
     IEnumerator JooImTalk()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(JH1);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH1);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JooIm1);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JooIm1);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JH2);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH2);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JooIm2);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JooIm2);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JH3);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH3);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JooIm3);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JooIm3);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JH4);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH4);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JooIm4);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JooIm4);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().StartDialogue(JH5);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(JH5);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        FindObjectOfType<DialogueManager>().nameText.color = new Color(0.2f, 0.6f, 1);
-        FindObjectOfType<DialogueManager>().dialogueText.color = new Color(0.2f, 0.6f, 1);
-        FindObjectOfType<DialogueManager>().dialogueText.alignment = TextAnchor.UpperCenter;
-        FindObjectOfType<DialogueManager>().StartDialogue(Message);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
-        FindObjectOfType<DialogueManager>().nameText.color = new Color(1, 1, 1);
-        FindObjectOfType<DialogueManager>().dialogueText.color = new Color(1, 1, 1);
-        FindObjectOfType<DialogueManager>().dialogueText.alignment = TextAnchor.UpperLeft;
+        DialogueManager.Instance().textTalker.color = new Color(0.2f, 0.6f, 1);
+        DialogueManager.Instance().textSentence.color = new Color(0.2f, 0.6f, 1);
+        DialogueManager.Instance().textSentence.alignment = TextAnchor.UpperCenter;
+        DialogueManager.Instance().StartDialogue(Message);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
+        DialogueManager.Instance().textTalker.color = new Color(1, 1, 1);
+        DialogueManager.Instance().textSentence.color = new Color(1, 1, 1);
+        DialogueManager.Instance().textSentence.alignment = TextAnchor.UpperLeft;
 
 
 

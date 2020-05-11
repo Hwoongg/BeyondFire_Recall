@@ -24,21 +24,21 @@ public class Ending_Suicide : MonoBehaviour
     }
     IEnumerator MainRoutine()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(fadeDialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(fadeDialogue);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
 
         objFadeEfx.SetActive(true);
         objBlack.SetActive(false);
         objFadeEfx.GetComponent<FadeEffect>().FadeIn();
 
-        FindObjectOfType<DialogueManager>().StartDialogue(beforeDialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(beforeDialogue);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         objAfterCG1.SetActive(true);
         objAfterCG2.SetActive(true);
-        FindObjectOfType<DialogueManager>().StartDialogue(afterDialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        DialogueManager.Instance().StartDialogue(afterDialogue);
+        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
         audio.Play();
         // 씬 끝나기 직전 딜레이
         yield return new WaitForSeconds(4.0f);

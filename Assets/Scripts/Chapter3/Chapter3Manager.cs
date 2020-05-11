@@ -42,7 +42,7 @@ public class Chapter3Manager : MonoBehaviour {
         objFadeEfx.GetComponent<FadeEffect>().FadeIn();
 
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().objDialogueBox.activeSelf == false);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         playerMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
         yield break;
