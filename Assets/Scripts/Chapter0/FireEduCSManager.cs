@@ -21,79 +21,17 @@ public class FireEduCSManager : MonoBehaviour
     bool isEnd;
 
     public GameObject objFadeEfx;
-    // Use this for initialization
+
+    DialogueManager dm;
+
     void Start ()
     {
         //SceneCount = 0;
         //isStop = false;
-        StartCoroutine("AllTalk");
+        dm = DialogueManager.Instance();
+        StartCoroutine(AllTalk());
         isEnd = false;
 	}
-
-    //// Update is called once per frame
-    //void Update () {
-    //       switch (SceneCount)
-    //       {
-    //           case 0:
-    //               Event0();
-    //               break;
-    //           case 1:
-    //               Event1();
-    //               break;
-    //           case 2:
-    //               Event2();
-    //               break;
-    //           case 3:
-    //               Event3();
-    //               break;
-    //       }
-    //   }
-
-    //   void Event0()
-    //   {
-    //       // 페이드 인
-    //       objFadeEfx.SetActive(true);
-    //       objFadeEfx.GetComponent<FadeEffect>().FadeIn();
-
-    //       SceneCount++;
-    //   }
-
-    //   void Event1()
-    //   {
-    //       // 대화 1
-    //       if (!isStop)
-    //       {
-    //           dialogue1.TriggerDialogue();
-    //           isStop = true;
-    //       }
-    //       if (dialogueBox.activeSelf == false)
-    //       {
-    //           isStop = false;
-    //           SceneCount++;
-    //       }
-    //   }
-
-    //   void Event2()
-    //   {
-    //       // 대화 2
-    //       if (!isStop)
-    //       {
-    //           dialogue2.TriggerDialogue();
-    //           isStop = true;
-    //       }
-    //       if (dialogueBox.activeSelf == false)
-    //       {
-    //           isStop = false;
-    //           SceneCount++;
-    //       }
-    //   }
-
-    //   void Event5()
-    //   {
-    //       // Fade Out
-    //       objFadeEfx.SetActive(true);
-    //       objFadeEfx.GetComponent<FadeEffect>().FadeOut();
-    //   }
 
     
     IEnumerator AllTalk()
@@ -103,17 +41,17 @@ public class FireEduCSManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        DialogueManager.Instance().StartDialogue(Talk1);
-        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
+        dm.StartDialogue(Talk1);
+        yield return new WaitUntil(() => dm.canvasObj.activeSelf == false);
 
-        DialogueManager.Instance().StartDialogue(Talk2);
-        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
+        dm.StartDialogue(Talk2);
+        yield return new WaitUntil(() => dm.canvasObj.activeSelf == false);
 
-        DialogueManager.Instance().StartDialogue(Talk3);
-        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
+        dm.StartDialogue(Talk3);
+        yield return new WaitUntil(() => dm.canvasObj.activeSelf == false);
 
-        DialogueManager.Instance().StartDialogue(Talk4);
-        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
+        dm.StartDialogue(Talk4);
+        yield return new WaitUntil(() => dm.canvasObj.activeSelf == false);
 
         yield return new WaitForSeconds(0.5f);
         objFadeEfx.GetComponent<FadeEffect>().FadeOut();
