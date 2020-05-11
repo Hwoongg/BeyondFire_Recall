@@ -32,7 +32,7 @@ public class WrongDoor : InteractionSystem
     // Use this for initialization
     void Start()
     {
-        invenSys = objInvenSys.GetComponent<InventorySystem>();
+        invenSys = FindObjectOfType<InventorySystem>().GetComponent<InventorySystem>();
         fadeEfx = objFadeEfx.GetComponent<FadeEffect>();
         playerAnimator = playerCharacter.GetComponent<Animator>();
     }
