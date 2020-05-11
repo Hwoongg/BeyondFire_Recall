@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class HPSystem : MonoBehaviour
@@ -16,6 +17,12 @@ public class HPSystem : MonoBehaviour
         set
         {
             nowHealth = value;
+            if(nowHealth <= 0)
+            {
+                // 화염 사망 연출
+                GameManager.Instance().SetNowScene();
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
     float MaxHealth;

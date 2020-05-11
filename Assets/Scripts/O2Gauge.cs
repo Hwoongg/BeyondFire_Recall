@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //
 // 산소 게이지 조절 스크립트 입니다.
@@ -39,6 +40,11 @@ public class O2Gauge : MonoBehaviour {
         set
         {
             fGauge = value;
+            if(fGauge <= 0)
+            {
+                GameManager.Instance().SetNowScene();
+                SceneManager.LoadScene("GameOver");
+            }
             GaugePersentage = fGauge / fMaxGauge;
             gaugeSilder.value = GaugePersentage;
         }
