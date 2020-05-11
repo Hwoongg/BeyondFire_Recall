@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
         controllCanvas = transform.GetChild(0).gameObject;
         mover = FindObjectOfType<CharacterMover>();
         interaction = mover.transform.GetComponentInChildren<GetInteraction>();
+
+        controllCanvas.SetActive(true);
     }
 
     public void InputLeft()

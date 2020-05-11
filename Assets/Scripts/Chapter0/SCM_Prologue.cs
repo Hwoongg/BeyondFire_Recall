@@ -7,7 +7,7 @@ public class SCM_Prologue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<PlayerController>().IsActive(true);
+        //FindObjectOfType<PlayerController>().IsActive(true);
     }
     
 

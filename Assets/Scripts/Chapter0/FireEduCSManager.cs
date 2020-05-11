@@ -56,6 +56,7 @@ public class FireEduCSManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         objFadeEfx.GetComponent<FadeEffect>().FadeOut();
         yield return new WaitForSeconds(1.5f);
+
         SceneManager.LoadScene("Prologue");
 
         yield break;
