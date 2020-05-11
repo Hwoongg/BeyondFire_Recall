@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
         mover = FindObjectOfType<CharacterMover>();
         interaction = mover.transform.GetComponentInChildren<GetInteraction>();
 
+        // 씬 시작시 스스로 캔버스 활성화.
         controllCanvas.SetActive(true);
     }
 
