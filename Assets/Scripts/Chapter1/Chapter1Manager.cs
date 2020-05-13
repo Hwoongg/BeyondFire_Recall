@@ -19,6 +19,7 @@ public class Chapter1Manager : MonoBehaviour
     public GameObject PartnerChar;
     public Dialogue PartnerDialogue;
     Vector3 partnerDest;
+    DialogueManager dm;
 
     private void Awake()
     {
@@ -26,11 +27,12 @@ public class Chapter1Manager : MonoBehaviour
         FireList = new List<Chapter1_FireEfx>();
         fadeEfx = objFadeEfx.GetComponent<FadeEffect>();
         partnerDest = new Vector3(13.79f, -3.549f - 1.8f, 0);
+        dm = DialogueManager.Instance();
     }
 
     private void Start()
     {
-
+        
         StartCoroutine(ChapterStart());
         //objFadeEfx.SetActive(true);
         //fadeEfx.FadeIn();
@@ -119,7 +121,7 @@ public class Chapter1Manager : MonoBehaviour
 
     IEnumerator PartnerEvent()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(PartnerDialogue);
+        dm.StartDialogue(PartnerDialogue);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         float nowLerp = 0.0f;
