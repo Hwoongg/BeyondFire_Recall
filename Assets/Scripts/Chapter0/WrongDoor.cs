@@ -75,11 +75,12 @@ public class WrongDoor : InteractionSystem
         // 불+연기 세팅
         objEventFire.SetActive(true);
 
-        // 지하 남자화장실 문 트리거 제거
+        // 지하 남자화장실 문 트리거 제거. 진압 트리거랑 겹치는 현상 대비
         //ToiletDoor.GetComponent<ToiletDoorInteraction>().enabled = false;
         Destroy(ToiletDoor.GetComponent<ToiletDoorInteraction>());
         Destroy(ToiletDoor.GetComponent<Collider2D>());
-        FireEx.GetComponent<FireExinguisher>().enabled = false;
+        //FireEx.GetComponent<FireExinguisher>().enabled = false;
+        Destroy(FireEx.GetComponent<FireExinguisher>());
         FireEx.GetComponent<ItemSystem>().enabled = true;
 
         // 화재 발견 트리거 활성화
