@@ -28,7 +28,7 @@ public class O2Gauge : MonoBehaviour {
     private CharacterMover characterMover;
 
     public GameObject objText;
-    private Text text;
+    private Text persentageText;
 
     private float fGauge;
     public float Gauge
@@ -58,7 +58,7 @@ public class O2Gauge : MonoBehaviour {
         dropFireParam = 1.0f;
         dropIdleParam = 1.0f;
         characterMover = FindObjectOfType<CharacterMover>();
-        text = objText.GetComponent<Text>();
+        persentageText = objText.GetComponent<Text>();
 	}
 
     private void Update()
@@ -86,7 +86,7 @@ public class O2Gauge : MonoBehaviour {
         }
 
         Gauge -= dropParam * Time.deltaTime;
-        text.text = (int)(GaugePersentage * 100) + "%";
+        persentageText.text = (int)(GaugePersentage * 100) + "%";
     }
 
     public void O2GaugePopUp()
