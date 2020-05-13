@@ -20,6 +20,7 @@ public class Prologue_MinHyuk : InteractionSystem
 
     public override void doAction()
     {
+        StopAllCoroutines();
         StartCoroutine(TalkRoutine());
     }
 
