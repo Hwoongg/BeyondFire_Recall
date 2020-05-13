@@ -17,7 +17,7 @@ public class StairInteraction : TeleportSystem
 
     public override void doAction()
     {
-        if (characterMover.moveType == CharacterMover.MoveType.NONE) // 다중입력 방지용 예외처리 코드 입니다. 쓸데없는 루틴 방지
+        if (characterMover.moveType == CharacterMover.MoveType.LOCK) // 다중입력 방지용 예외처리 코드 입니다. 쓸데없는 루틴 방지
         {
             Debug.Log("이동명령 다중 입력 방지 코드 실행");
             return;
@@ -26,7 +26,7 @@ public class StairInteraction : TeleportSystem
         Debug.Log("StairInteraction의 doAction()이 실행됨");
 
         // 캐릭터를 커멘드 입력 불가상태로 세팅한다.
-        characterMover.moveType = CharacterMover.MoveType.NONE;
+        characterMover.moveType = CharacterMover.MoveType.LOCK;
         StartCoroutine("StairMoveTeleport");
 
         //StartCoroutine(StairRoutine());
@@ -134,7 +134,7 @@ public class StairInteraction : TeleportSystem
 
     public IEnumerator StairRoutine()
     {
-        characterMover.moveType = CharacterMover.MoveType.NONE;
+        characterMover.moveType = CharacterMover.MoveType.LOCK;
 
         yield return StartCoroutine(MoveCenter());
 

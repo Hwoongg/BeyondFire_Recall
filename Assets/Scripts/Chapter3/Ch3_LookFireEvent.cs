@@ -30,7 +30,7 @@ public class Ch3_LookFireEvent : MonoBehaviour
 
     IEnumerator LookFire()
     {
-        FindObjectOfType<CharacterMover>().moveType = CharacterMover.MoveType.NONE;
+        FindObjectOfType<CharacterMover>().moveType = CharacterMover.MoveType.LOCK;
 
         // 플레이어 왼쪽방향 보기
         player.transform.localScale = new Vector3(1, 1, 1);

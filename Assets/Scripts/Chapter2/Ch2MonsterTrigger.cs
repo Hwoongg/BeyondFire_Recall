@@ -43,7 +43,7 @@ public class Ch2MonsterTrigger : MonoBehaviour
     IEnumerator MainRoutine()
     {
         // 이동 불가 상태
-        characterMover.moveType = CharacterMover.MoveType.NONE;
+        characterMover.moveType = CharacterMover.MoveType.LOCK;
         characterMover.myAnimator.SetBool("IsWalk", false);
 
         //// 괴물 움직임 코루틴 시작

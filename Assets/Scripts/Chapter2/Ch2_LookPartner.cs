@@ -45,7 +45,7 @@ public class Ch2_LookPartner : InteractionSystem
     IEnumerator MainRoutine()
     {
         // 무브 잠금
-        playerMover.moveType = CharacterMover.MoveType.NONE;
+        playerMover.moveType = CharacterMover.MoveType.LOCK;
 
         // 상단 CG 출현. 패널 활성화
         objCG.SetActive(true);

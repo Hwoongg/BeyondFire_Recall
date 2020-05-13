@@ -89,7 +89,7 @@ public class CharacterMover : MonoBehaviour
 
     public enum MoveType
     {
-        NONE,
+        LOCK,
         COMMANDMOVE,
         AUTOMOVE
     }
@@ -147,7 +147,7 @@ public class CharacterMover : MonoBehaviour
 
         switch (moveType)
         {
-            case MoveType.NONE:
+            case MoveType.LOCK:
                 break;
 
             case MoveType.COMMANDMOVE: // 플레이어 조작으로 이동

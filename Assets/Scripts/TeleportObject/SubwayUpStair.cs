@@ -22,7 +22,7 @@ public class SubwayUpStair : TeleportSystem
     IEnumerator Routine()
     {
         // 캐릭터를 커멘드 입력 불가상태로 세팅한다.
-        characterMover.moveType = CharacterMover.MoveType.NONE;
+        characterMover.moveType = CharacterMover.MoveType.LOCK;
 
         yield return StartCoroutine(MoveCenter());
         yield return StartCoroutine(StairUpMove());

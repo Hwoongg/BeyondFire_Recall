@@ -17,7 +17,7 @@ public class SlidingDoorInteraction : TeleportSystem
 
     public override void doAction()
     {
-        if (characterMover.moveType == CharacterMover.MoveType.NONE) // 다중입력 방지용 예외처리 코드 입니다. 쓸데없는 루틴 방지, 애니메이터 꼬임 제거
+        if (characterMover.moveType == CharacterMover.MoveType.LOCK) // 다중입력 방지용 예외처리 코드 입니다. 쓸데없는 루틴 방지, 애니메이터 꼬임 제거
         {
             Debug.Log("이동명령 다중 입력 방지 코드 실행");
             return;
@@ -45,7 +45,7 @@ public class SlidingDoorInteraction : TeleportSystem
     IEnumerator SlidingDoorRoutine()
     {
         // 캐릭터를 커멘드 입력 불가상태로 세팅한다.
-        characterMover.moveType = CharacterMover.MoveType.NONE;
+        characterMover.moveType = CharacterMover.MoveType.LOCK;
 
         yield return StartCoroutine("MoveCenter");
         yield return StartCoroutine("DoorSlide");

@@ -54,7 +54,7 @@ public class Chapter1Manager : MonoBehaviour
 
         CharacterMover playerMover = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMover>();
 
-        playerMover.moveType = CharacterMover.MoveType.NONE;
+        playerMover.moveType = CharacterMover.MoveType.LOCK;
 
         StartUI.SetActive(true);
 

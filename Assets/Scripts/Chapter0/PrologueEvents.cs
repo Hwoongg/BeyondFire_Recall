@@ -70,7 +70,7 @@ public class PrologueEvents : MonoBehaviour {
         cameraSystem.changeViewport();
 
         // 플레이어 이동상태 잠금
-        characterMover.moveType = CharacterMover.MoveType.NONE;
+        characterMover.moveType = CharacterMover.MoveType.LOCK;
 
         Character.transform.localScale = new Vector3(-1, 1, 1);
         characterMover.myAnimator.SetBool("IsWalk", false);
@@ -125,7 +125,7 @@ public class PrologueEvents : MonoBehaviour {
     public IEnumerator LibraryDoorEvent()
     {
         // 플레이어 이동상태 잠금
-        characterMover.moveType = CharacterMover.MoveType.NONE;
+        characterMover.moveType = CharacterMover.MoveType.LOCK;
         characterMover.myAnimator.SetBool("IsWalk", false);
         // 문 상호작용법 튜토리얼
         tutorialPanel.OnCenter();
@@ -148,7 +148,7 @@ public class PrologueEvents : MonoBehaviour {
     public IEnumerator DuplexStairEvent()
     {
         // 양방향 계단 튜토리얼
-        characterMover.moveType = CharacterMover.MoveType.NONE;
+        characterMover.moveType = CharacterMover.MoveType.LOCK;
         characterMover.myAnimator.SetBool("IsWalk", false);
 
         tutorialPanel.OnTopBottom();
@@ -170,7 +170,7 @@ public class PrologueEvents : MonoBehaviour {
 
     public IEnumerator InvenTutorial()
     {
-        characterMover.moveType = CharacterMover.MoveType.NONE;
+        characterMover.moveType = CharacterMover.MoveType.LOCK;
         tutorialPanel.OnInven();
 
         dialogueManager.textTalker.color = new Color(0.2f, 0.6f, 1);
