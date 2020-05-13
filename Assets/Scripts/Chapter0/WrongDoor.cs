@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class WrongDoor : InteractionSystem
 {
-    public GameObject objInvenSys;
-    public GameObject objFadeEfx;
-    private FadeEffect fadeEfx;
+    private Fader fader;
     private InventorySystem invenSys;
 
     public GameObject playerCharacter;
 
-    public GameObject TestFire;
+    public GameObject objEventFire;
 
     public Dialogue dialogue1;
     public Dialogue dialogue2;
@@ -33,7 +31,7 @@ public class WrongDoor : InteractionSystem
     void Start()
     {
         invenSys = FindObjectOfType<InventorySystem>().GetComponent<InventorySystem>();
-        fadeEfx = objFadeEfx.GetComponent<FadeEffect>();
+        fader = FindObjectOfType<Fader>();
         playerAnimator = playerCharacter.GetComponent<Animator>();
     }
 
@@ -64,7 +62,7 @@ public class WrongDoor : InteractionSystem
         yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         // 페이드 아웃
-        fadeEfx.FadeOut();
+        fader.FadeOut();
 
         yield return new WaitForSeconds(1.0f);
         // 캐릭터 우측 동아리실로 좌표 이동
@@ -75,7 +73,7 @@ public class WrongDoor : InteractionSystem
         FindObjectOfType<CameraSystem>().changeViewport();
 
         // 불+연기 세팅
-        TestFire.SetActive(true);
+        objEventFire.SetActive(true);
 
         // 지하 남자화장실 문 트리거 제거
         //ToiletDoor.GetComponent<ToiletDoorInteraction>().enabled = false;
@@ -83,6 +81,7 @@ public class WrongDoor : InteractionSystem
         Destroy(ToiletDoor.GetComponent<Collider2D>());
         FireEx.GetComponent<FireExinguisher>().enabled = false;
         FireEx.GetComponent<ItemSystem>().enabled = true;
+
         // 화재 발견 트리거 활성화
         objFireFocus.SetActive(true);
 
@@ -99,7 +98,7 @@ public class WrongDoor : InteractionSystem
 
 
         yield return new WaitForSeconds(2.0f);
-        fadeEfx.FadeIn();
+        fader.FadeIn();
 
 
         // 뭔가 이상함을 느낀 대사

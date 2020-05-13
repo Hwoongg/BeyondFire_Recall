@@ -11,11 +11,13 @@ public class Chapter1_StartCutScene : MonoBehaviour {
     public GameObject objSiren;
     public GameObject objFadeEfx;
     private FadeEffect fadeEfx;
+    DialogueManager dm;
 
 	// Use this for initialization
 	void Start () {
         fadeEfx = objFadeEfx.GetComponent<FadeEffect>();
-        StartCoroutine("Chapter1StartCutScene");
+        dm = DialogueManager.Instance();
+        StartCoroutine(Chapter1StartCutScene());
         
 	}
 	
@@ -23,12 +25,12 @@ public class Chapter1_StartCutScene : MonoBehaviour {
     {
         objFadeEfx.SetActive(true);
         fadeEfx.FadeIn();
-        DialogueManager.Instance().StartDialogue(dialogue1);
-        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
+        dm.StartDialogue(dialogue1);
+        yield return new WaitUntil(() => dm.canvasObj.activeSelf == false);
 
         objSiren.SetActive(true);
-        DialogueManager.Instance().StartDialogue(dialogue2);
-        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
+        dm.StartDialogue(dialogue2);
+        yield return new WaitUntil(() => dm.canvasObj.activeSelf == false);
 
         
         fadeEfx.FadeOut();

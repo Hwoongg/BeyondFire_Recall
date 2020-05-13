@@ -18,13 +18,22 @@ public class ItemSlot
 
     // //////////////////
 
-    ItemSlot()
+    public ItemSlot()
     {
         //ItemArray = new List<GameObject>();
 
         iItemCount = 0;
-        objButtonsUI = new GameObject[3];
+        objButtonsUI = new GameObject[5];
         
+    }
+
+    public ItemSlot(int length)
+    {
+        //ItemArray = new List<GameObject>();
+
+        iItemCount = 0;
+        objButtonsUI = new GameObject[length];
+
     }
 
     static public ItemSlot CreateSlot()
@@ -49,23 +58,21 @@ public class InventorySystem : MonoBehaviour
     //private int iActiveItemCount;
     //private GameObject[] PassiveItem = new GameObject[3];
     //private int iPassiveItemCount;
-    public ItemSlot ActiveSlot;
-    public ItemSlot PassiveSlot;
+    public ItemSlot itemSlots;
 
-    public GameObject objDiary;
+    // 수첩창 오브젝트
+    public GameObject objDiaryUI;
 
     // 아이템이 보여질 패널 변수
     public GameObject slotPanel;
-    public GameObject objActiveSlotUI;
+    public GameObject objSlotButtonGroup;
     //private GameObject[] objActiveButtonsUI; // 슬롯 클래스에 병합
-    public GameObject objPassiveSlotUI;
-    //private GameObject[] imgPassiveButtonsUI; // 슬롯 클래스에 병합
 
     // 인벤토리 여닫는 버튼 변수. 활성화 상태 제어용이므로 게임오브젝트형으로 받음
     public GameObject btnInvenCall;
     public GameObject btnLightPanel;
     private Image imageLightPanel; // 빛패널 알파제어용
-    public GameObject ItemPopup; // 팝업창 오브젝트
+    public GameObject objPopupUI; // 팝업창 오브젝트
 
 
     // 카메라 뷰포트 조작용 카메라 시스템
@@ -84,26 +91,24 @@ public class InventorySystem : MonoBehaviour
 
     // /////////////////////////////////////////////////////////////////
 
-
+    private void Awake()
+    {
+        itemSlots = new ItemSlot(objSlotButtonGroup.transform.childCount);
+        
+    }
     private void Start()
     {
         cameraSystem = FindObjectOfType<CameraSystem>();
 
         state = State.DISABLE;
         imageLightPanel = btnLightPanel.GetComponent<Image>();
+        
 
-        // 슬롯 데이터 초기화. Awake로 이동시킬 예정
-        ActiveSlot = ItemSlot.CreateSlot();
-        PassiveSlot = ItemSlot.CreateSlot();
-
-        // 슬롯의 버튼 참조용 변수에 슬롯UI 오브젝트들을 할당.
-        for (int i = 0; i < objActiveSlotUI.transform.childCount; i++)
+        // 슬롯의 버튼 UI 내용물 할당
+        // -1은 수첩슬롯 
+        for (int i = 0; i < objSlotButtonGroup.transform.childCount; i++)
         {
-            ActiveSlot.objButtonsUI[i] = objActiveSlotUI.transform.GetChild(i).gameObject;
-        }
-        for (int i = 0; i < objPassiveSlotUI.transform.childCount; i++)
-        {
-            PassiveSlot.objButtonsUI[i] = objPassiveSlotUI.transform.GetChild(i).gameObject;
+            itemSlots.objButtonsUI[i] = objSlotButtonGroup.transform.GetChild(i).gameObject;
         }
 
 
@@ -119,7 +124,7 @@ public class InventorySystem : MonoBehaviour
         if (state != State.DISABLE) // DISABLE 일때만 실행
             return;
 
-        StartCoroutine("OpenInventoryMove");
+        StartCoroutine(OpenInventoryMove());
     }
     // 인벤토리 호출 동작 함수 본체. 코루틴
     IEnumerator OpenInventoryMove()
@@ -324,12 +329,9 @@ public class InventorySystem : MonoBehaviour
 
         switch(_ItemSys.itemType)
         {
-            case ItemSystem.ItemType.ACTIVE:
-                isSucsess = AddItem(_ItemSys.gameObject, ActiveSlot);
-                break;
-
+            case ItemSystem.ItemType.ACTIVE: // 아이템 타입 구분 제거
             case ItemSystem.ItemType.PASSIVE:
-                isSucsess = AddItem(_ItemSys.gameObject, PassiveSlot);
+                isSucsess = AddItem(_ItemSys.gameObject, itemSlots);
                 break;
         }
 
@@ -371,10 +373,10 @@ public class InventorySystem : MonoBehaviour
     {
         for(int i = 0; i < 3; i++)
         {
-            if (PassiveSlot.ItemArray[i] == null) // 비어있는 슬롯일 때 Pass
+            if (itemSlots.ItemArray[i] == null) // 비어있는 슬롯일 때 Pass
                 continue;
 
-            if(PassiveSlot.ItemArray[i].GetComponent<ItemSystem>().ItemName == _itemName)
+            if(itemSlots.ItemArray[i].GetComponent<ItemSystem>().ItemName == _itemName)
             {
                 return true;
             }
@@ -389,10 +391,10 @@ public class InventorySystem : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            if (ActiveSlot.ItemArray[i] == null) // 비어있는 슬롯일 때 Pass
+            if (itemSlots.ItemArray[i] == null) // 비어있는 슬롯일 때 Pass
                 continue;
 
-            if (ActiveSlot.ItemArray[i].GetComponent<ItemSystem>().ItemName == _itemName)
+            if (itemSlots.ItemArray[i].GetComponent<ItemSystem>().ItemName == _itemName)
             {
                 return true;
             }
@@ -405,47 +407,47 @@ public class InventorySystem : MonoBehaviour
     // 수첩 호출 함수
     public void OpenDiary()
     {
-        objDiary.SetActive(true);
-        objDiary.GetComponent<DiaryUI>().MenuOn(0);
+        objDiaryUI.SetActive(true);
+        objDiaryUI.GetComponent<DiaryUI>().MenuOn(0);
     }
     public void CloseDiary()
     {
-        objDiary.SetActive(false);
+        objDiaryUI.SetActive(false);
     }
 
 
     public void ItemPopupOn(int num)
     {
         // 해당 슬롯 아이템 정보가 들어있는지 체크
-        if (num < 3)
-        {
-            if (ActiveSlot.ItemArray[num] == null)
+        //if (num < 3)
+        //{
+            if (itemSlots.ItemArray[num] == null)
                 return;
             else
             {
                 //ItemPopup.SetActive(true);
-                ItemPopup.GetComponentInChildren<Text>().text =
-                    ActiveSlot.ItemArray[num].GetComponent<ItemSystem>().ItemInfo;
+                objPopupUI.GetComponentInChildren<Text>().text =
+                    itemSlots.ItemArray[num].GetComponent<ItemSystem>().ItemInfo;
             }
-        }
-        else
-        {
-            if (PassiveSlot.ItemArray[num % 3] == null)
-                return;
-            else
-            {
-                //ItemPopup.SetActive(true);
-                ItemPopup.GetComponentInChildren<Text>().text =
-                    PassiveSlot.ItemArray[num % 3].GetComponent<ItemSystem>().ItemInfo;
-            }
-        }
+        //}
+        //else
+        //{
+        //    if (PassiveSlot.ItemArray[num % 3] == null)
+        //        return;
+        //    else
+        //    {
+        //        //ItemPopup.SetActive(true);
+        //        ItemPopup.GetComponentInChildren<Text>().text =
+        //            PassiveSlot.ItemArray[num % 3].GetComponent<ItemSystem>().ItemInfo;
+        //    }
+        //}
         
 
         // 해당 슬롯의 아이템 팝업정보로 교체
         // ...
 
         // 팝업창 활성화
-        ItemPopup.SetActive(true);
+        objPopupUI.SetActive(true);
 
     }
 
@@ -458,7 +460,7 @@ public class InventorySystem : MonoBehaviour
         // ...
 
         // 팝업창 비활성화
-        ItemPopup.SetActive(false);
+        objPopupUI.SetActive(false);
     }
 
     public int CheckItemCount(ItemSystem.ItemType _itemType, string _itemName)
@@ -468,11 +470,11 @@ public class InventorySystem : MonoBehaviour
         ItemSlot slot;
         if(_itemType == ItemSystem.ItemType.ACTIVE)
         {
-            slot = ActiveSlot;
+            slot = itemSlots;
         }
         else
         {
-            slot = PassiveSlot;
+            slot = itemSlots;
         }
 
         for (int i = 0; i < 3; i++)
@@ -494,11 +496,11 @@ public class InventorySystem : MonoBehaviour
         ItemSlot slot;
         if (_itemType == ItemSystem.ItemType.ACTIVE)
         {
-            slot = ActiveSlot;
+            slot = itemSlots;
         }
         else
         {
-            slot = PassiveSlot;
+            slot = itemSlots;
         }
 
         for (int i = 0; i < 3; i++)

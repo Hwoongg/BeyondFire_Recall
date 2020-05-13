@@ -38,9 +38,7 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         sentences = new Queue<string>();
-    }
-    void Start ()
-    {
+
         DontDestroyOnLoad(gameObject);
         instance = this;
         System.Type ty = GetType();
@@ -58,6 +56,11 @@ public class DialogueManager : MonoBehaviour
         imgTalker = dialogueBox.imgTalker;
 
         canvasObj.SetActive(false);
+    }
+
+    void Start ()
+    {
+        
 	}
 
     

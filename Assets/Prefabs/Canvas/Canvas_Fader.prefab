@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2794695394581177859}
   - component: {fileID: 2794695394581177858}
   - component: {fileID: 2794695394581177869}
+  - component: {fileID: 3008686503535215688}
   m_Layer: 5
   m_Name: Canvas_Fader
   m_TagString: Untagged
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3008686503535215688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794695394581177868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97aeff1d5b62d2b4cbcbb97f24bbb43d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2794695395053116174
 GameObject:
   m_ObjectHideFlags: 0

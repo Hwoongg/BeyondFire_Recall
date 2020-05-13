@@ -25,6 +25,8 @@ public class FireFocus : DialogueTrigger
         }
     }
 
+    
+
     IEnumerator FocusFire()
     {
         // CG 활성화
@@ -32,13 +34,12 @@ public class FireFocus : DialogueTrigger
         objCGTop.SetActive(true);
         objCGTop.GetComponent<Image>().sprite = LookFireCG;
 
-
-
+        
         // 대사 출력
         DialogueManager.Instance().StartDialogue(dialogue);
         yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
-        
-        
+
+        objCG.SetActive(false);
 
         yield break;
     }
