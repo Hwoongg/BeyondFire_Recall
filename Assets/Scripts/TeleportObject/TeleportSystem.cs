@@ -5,14 +5,8 @@ using UnityEngine;
 
 
 //
-// 특정한 오브젝트를 지정한 좌표로 이동시키는 기능 스크립트입니다.
+// 특정한 오브젝트를 지정한 좌표로 이동시키는 상호작용 오브젝트.
 //
-
-// (18.07.30) 카메라 오브젝트를 참조하여 카메라 오브젝트의 상태, 내부함수를 사용하여 작동하는 방법 생각중...
-// 카메라가 TeleportSystem 컴포넌트 오브젝트와만 상호작용한다면 괜찮은 방법일 듯
-// CameraState를 생성하여 관리하게될 것이기 때문에 TeleportSystem은 카메라를 제어하는 오브젝트임이 확실해야함...
-// CameraSystem이 싱글턴이 되는게 편하다고 생각됨.
-
 
 public class TeleportSystem : InteractionSystem
 {
@@ -62,7 +56,7 @@ public class TeleportSystem : InteractionSystem
 
 
         //StartCoroutine("DoorMoveTeleport");
-        StartCoroutine("TeleportRoutine");
+        StartCoroutine(TeleportRoutine());
 
     }
 
@@ -76,7 +70,7 @@ public class TeleportSystem : InteractionSystem
         doAction();
     }
 
-    // 캐릭터의 좌표를 도착지 좌표로 변경시키는 함수
+    // 캐릭터의 좌표를 도착지 좌표로 변경시킨다.
     public void Teleport()
     {
         // 도착지로 입력된 오브젝트의 좌표로 값을 대입하여 이동
@@ -149,14 +143,15 @@ public class TeleportSystem : InteractionSystem
     // 중앙에 가서 뒤돌아 이동하는 루틴
     public IEnumerator TeleportRoutine()
     {
-        // 캐릭터를 커멘드 입력 불가상태로 세팅한다.
-        characterMover.moveType = CharacterMover.MoveType.LOCK;
+        // 문 중앙으로 강제 이동
+        characterMover.moveType = CharacterMover.MoveType.LOCK; // 입력불가 상태로 세팅
+        yield return StartCoroutine(MoveCenter());
 
-        yield return StartCoroutine("MoveCenter");
+        // 목표로 이동
+        Teleport(); // 좌표 변경
+        cameraSystem.changeViewport(); // 카메라 변경
 
-        Teleport();
-        cameraSystem.changeViewport();
-
+        // 이동불가 상태 회복
         characterMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
 
         yield break;

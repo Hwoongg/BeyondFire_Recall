@@ -7,6 +7,12 @@ public class SubwayDownStair : TeleportSystem
 
     public override void doAction()
     {
+        if(characterMover.moveType == CharacterMover.MoveType.LOCK)
+        {
+            Debug.Log("이동명령 다중 입력 방지 코드 실행");
+            return;
+        }
+
         StartCoroutine(Routine());
     }
 
