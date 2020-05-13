@@ -286,7 +286,7 @@ public class InventorySystem : MonoBehaviour
         Debug.Log("아이템 추가 함수 호출");
 
         // 꽉차있는경우
-        if(_itemSlot.iItemCount > 2)
+        if(_itemSlot.iItemCount > 5)
         {
             DialogueManager.Instance().StartDialogue(dialogue);
             return false;
@@ -302,7 +302,7 @@ public class InventorySystem : MonoBehaviour
         //    = _objItem.GetComponent<ItemSystem>().sprSlotImage;
 
         // itemCount 위치가 아닌 순회를 돌아 들어갈 위치를 검색하여 교체한다.
-        for(int i=0; i<3; i++)
+        for(int i=0; i<_itemSlot.ItemArray.Length; i++)
         {
             if(_itemSlot.ItemArray[i] == null)
             {
