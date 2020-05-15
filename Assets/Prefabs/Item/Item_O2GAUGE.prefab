@@ -401,8 +401,9 @@ GameObject:
   - component: {fileID: 5862182772933140342}
   - component: {fileID: 7979070534828407915}
   - component: {fileID: 7979070534828407914}
+  - component: {fileID: 9006367813706113706}
   m_Layer: 5
-  m_Name: O2GAUGE
+  m_Name: Item_O2GAUGE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,3 +506,21 @@ MonoBehaviour:
   dropIdleParam: 0
   onFire: 0
   objText: {fileID: 7979070533890585061}
+--- !u!114 &9006367813706113706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979070534828407956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1cb8b178972e4546b1ef17b4b5e5416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  ItemName: O2Gauge
+  sprSlotImage: {fileID: 21300088, guid: 86283039f64c73749aaba67d1e01a54c, type: 3}
+  ItemInfo: "\uC0B0\uC18C\uD1B5. \uAC8C\uC774\uC9C0\uAC00 \uBAA8\uB450 \uB5A8\uC5B4\uC9C0\uBA74
+    \uC0AC\uB9DD\uD55C\uB2E4. \uB2EC\uB9AC\uAC70\uB098 \uC0AC\uB78C\uC744 \uC5C5\uACE0\uC788\uC73C\uBA74
+    \uB354\uC6B1 \uBE68\uB9AC \uC18C\uC9C4\uB41C\uB2E4."

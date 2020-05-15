@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Ending_Suicide : MonoBehaviour
 {
-    public GameObject objFadeEfx;
-    //private FadeEffect fadeEfx;
-
+    
     public GameObject objBlack;
     public GameObject objAfterCG1;
     public GameObject objAfterCG2;
@@ -16,9 +14,15 @@ public class Ending_Suicide : MonoBehaviour
     public Dialogue beforeDialogue;
     public Dialogue afterDialogue;
     AudioSource audio;
-    
+
+    Fader fader;
+    DialogueManager dm;
+
     void Start()
     {
+        fader = FindObjectOfType<Fader>();
+        dm = DialogueManager.Instance();
+
         audio = gameObject.GetComponent<AudioSource>();
         StartCoroutine(MainRoutine());
     }
@@ -28,9 +32,9 @@ public class Ending_Suicide : MonoBehaviour
         yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
 
-        objFadeEfx.SetActive(true);
+        
         objBlack.SetActive(false);
-        objFadeEfx.GetComponent<FadeEffect>().FadeIn();
+        fader.FadeIn();
 
         DialogueManager.Instance().StartDialogue(beforeDialogue);
         yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
@@ -43,7 +47,7 @@ public class Ending_Suicide : MonoBehaviour
         // 씬 끝나기 직전 딜레이
         yield return new WaitForSeconds(4.0f);
 
-        objFadeEfx.GetComponent<FadeEffect>().FadeOut();
+        fader.FadeOut();
         audio.Play();
 
         yield return new WaitForSeconds(7.0f);

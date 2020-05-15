@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Ending_Interview : MonoBehaviour
 {
-    public GameObject objFadeEfx;
-    //private FadeEffect fadeEfx;
+    
 
 
     public GameObject objCG1;
@@ -18,15 +17,19 @@ public class Ending_Interview : MonoBehaviour
     public Dialogue dialogue2;
     public Dialogue dialogue3;
     public Dialogue dialogue4;
+    DialogueManager dm;
+    Fader fader;
     // Use this for initialization
     void Start()
     {
+        dm = DialogueManager.Instance();
+        fader = FindObjectOfType<Fader>();
+
         StartCoroutine(MainRoutine());
     }
     IEnumerator MainRoutine()
     {
-        objFadeEfx.SetActive(true);
-        objFadeEfx.GetComponent<FadeEffect>().FadeIn();
+        fader.FadeIn();
 
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
@@ -43,7 +46,7 @@ public class Ending_Interview : MonoBehaviour
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue4);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
-        objFadeEfx.GetComponent<FadeEffect>().FadeOut();
+        fader.FadeOut();
 
         yield return new WaitForSeconds(2.0f);
 

@@ -88,13 +88,21 @@ public class InventorySystem : MonoBehaviour
 
     public Dialogue dialogue;
     public Sprite nullImage;
+    [SerializeField] GameObject prfO2Gauge;
 
     // /////////////////////////////////////////////////////////////////
 
     private void Awake()
     {
         itemSlots = new ItemSlot(objSlotButtonGroup.transform.childCount);
-        
+
+        // 슬롯의 버튼 UI 내용물 할당
+        // -1은 수첩슬롯 
+        for (int i = 0; i < objSlotButtonGroup.transform.childCount; i++)
+        {
+            itemSlots.objButtonsUI[i] = objSlotButtonGroup.transform.GetChild(i).gameObject;
+        }
+
     }
     private void Start()
     {
@@ -104,12 +112,7 @@ public class InventorySystem : MonoBehaviour
         imageLightPanel = btnLightPanel.GetComponent<Image>();
         
 
-        // 슬롯의 버튼 UI 내용물 할당
-        // -1은 수첩슬롯 
-        for (int i = 0; i < objSlotButtonGroup.transform.childCount; i++)
-        {
-            itemSlots.objButtonsUI[i] = objSlotButtonGroup.transform.GetChild(i).gameObject;
-        }
+        
 
 
         // 슬롯 패널의 이미지 컴포넌트 참조 취득
@@ -519,5 +522,13 @@ public class InventorySystem : MonoBehaviour
             }
 
         }
+    }
+
+    public void CreateO2Gauge()
+    {
+        GameObject o2 = Instantiate(prfO2Gauge, itemSlots.objButtonsUI[0].transform);
+        // 아이템 등록처리
+        AddItem(o2.GetComponent<ItemSystem>());
+        o2.SetActive(true);
     }
 }

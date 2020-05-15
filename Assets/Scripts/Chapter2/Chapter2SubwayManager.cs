@@ -9,8 +9,7 @@ public class Chapter2SubwayManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        objFadeEfx.SetActive(true);
-        objFadeEfx.GetComponent<FadeEffect>().FadeIn();
+        FindObjectOfType<Fader>().FadeIn();
         FindObjectOfType<CameraSystem>().changeViewport();
         
 	}

@@ -11,12 +11,17 @@ public class Chapter3Manager : MonoBehaviour {
 
     public GameObject StartUI;
     private Text text;
-
-    public GameObject objFadeEfx;
+    
 
     public Dialogue dialogue;
-    // Use this for initialization
-    void Start () {
+    private void Awake()
+    {
+
+    }
+
+    void Start ()
+    {
+        FindObjectOfType<Fader>().FadeIn();
         StartCoroutine(MainRoutine());
 	}
 
@@ -37,11 +42,10 @@ public class Chapter3Manager : MonoBehaviour {
         yield return StartCoroutine(StartTextFadeOut());
 
         StartUI.SetActive(false);
+        
+        
 
-        objFadeEfx.SetActive(true);
-        objFadeEfx.GetComponent<FadeEffect>().FadeIn();
-
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        DialogueManager.Instance().StartDialogue(dialogue);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         playerMover.moveType = CharacterMover.MoveType.COMMANDMOVE;

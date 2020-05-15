@@ -22,6 +22,9 @@ public class FadeEffect : MonoBehaviour {
 
     public void FadeIn()
     {
+        //if (ImageComponent == null)
+        //    ImageComponent = GetComponent<Image>();
+
         // Fade In Image Setting
         ImageComponent.sprite = FadeInSprite;
 

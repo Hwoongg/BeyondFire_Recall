@@ -9,7 +9,14 @@ public class NormalDoorInteraction : TeleportSystem {
     new void Start()
     {
         base.Start();
-        DoorCover = transform.GetChild(0).gameObject;
+
+        if (DoorCover == null)
+        {
+            if (transform.childCount > 0)
+            {
+                DoorCover = transform.GetChild(0).gameObject;
+            }
+        }
     }
 
     public override void doAction()

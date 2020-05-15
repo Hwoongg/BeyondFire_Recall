@@ -21,11 +21,12 @@ public class Ch2_SubwayStartCut : MonoBehaviour {
     public Dialogue BeforeDialogue;
     public Dialogue AfterDialogue;
 
-    
+    DialogueManager dialogueManager;
 
     // Use this for initialization
     void Start ()
     {
+        dialogueManager = DialogueManager.Instance();
         StartCoroutine(MainRoutine());
 	}
 	
@@ -47,8 +48,7 @@ public class Ch2_SubwayStartCut : MonoBehaviour {
         objFadeEfx.SetActive(true);
         objFadeEfx.GetComponent<FadeEffect>().FadeIn();
 
-        DialogueManager dialogueManager = DialogueManager.Instance();
-
+         
         dialogueManager.StartDialogue(BeforeDialogue);
         yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
 

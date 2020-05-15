@@ -18,6 +18,7 @@ public class Fader : MonoBehaviour
     
     public void FadeIn()
     {
+        fadeEffect.gameObject.SetActive(true);
         fadeEffect.FadeIn();
     }
 

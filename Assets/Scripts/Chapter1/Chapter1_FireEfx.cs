@@ -21,10 +21,10 @@ public class Chapter1_FireEfx : FireEfx {
     }
 
     // 불길 레벨 상승루틴 중단 후 하강루틴으로 전환 
-    public void lullFire()
+    public void LullFire()
     {
         StopCoroutine(nowRoutine);
-        StartCoroutine("FireLullRoutine");
+        StartCoroutine(FireLullRoutine());
     }
 
     IEnumerator FireLullRoutine()

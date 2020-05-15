@@ -20,6 +20,8 @@ public class Chapter1Manager : MonoBehaviour
     public Dialogue PartnerDialogue;
     Vector3 partnerDest;
     DialogueManager dm;
+    
+    InventorySystem invenSys;
 
     private void Awake()
     {
@@ -32,7 +34,12 @@ public class Chapter1Manager : MonoBehaviour
 
     private void Start()
     {
-        
+
+        // 플레이어 인벤토리에 산소통 추가
+        invenSys = FindObjectOfType<InventorySystem>();
+        invenSys.CreateO2Gauge();
+
+
         StartCoroutine(ChapterStart());
         //objFadeEfx.SetActive(true);
         //fadeEfx.FadeIn();
@@ -46,7 +53,7 @@ public class Chapter1Manager : MonoBehaviour
         // 화염 리스트에 진압중 메세지 뿌리기
         for(int i=0; i<FireList.Count; i++)
         {
-            FireList[i].lullFire();
+            FireList[i].LullFire();
         }
 
     }

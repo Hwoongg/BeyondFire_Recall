@@ -7,6 +7,10 @@ public class FireExinguisher : InteractionSystem {
     // 소화기 UI
     public GameObject FireExinUI;
 
+    private void Update()
+    {
+        
+    }
     public override void doAction()
     {
         // 소화기 UI 활성화

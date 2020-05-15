@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Ending_Socialphobia : MonoBehaviour
 {
-    public GameObject objFadeEfx;
-    //private FadeEffect fadeEfx;
+    Fader fader;
+    DialogueManager dm;
 
     public GameObject objBlack;
     public GameObject objAfterCG;
@@ -17,6 +17,9 @@ public class Ending_Socialphobia : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        fader = FindObjectOfType<Fader>();
+        dm = DialogueManager.Instance();
+
         StartCoroutine(MainRoutine());
     }
     IEnumerator MainRoutine()
@@ -25,9 +28,8 @@ public class Ending_Socialphobia : MonoBehaviour
         yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         
-        objFadeEfx.SetActive(true);
         objBlack.SetActive(false);
-        objFadeEfx.GetComponent<FadeEffect>().FadeIn();
+        fader.FadeIn();
 
         DialogueManager.Instance().StartDialogue(beforeDialogue);
         yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
@@ -37,7 +39,7 @@ public class Ending_Socialphobia : MonoBehaviour
         yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
         
-        objFadeEfx.GetComponent<FadeEffect>().FadeOut();
+        fader.FadeOut();
 
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene("Ending_Suicide");

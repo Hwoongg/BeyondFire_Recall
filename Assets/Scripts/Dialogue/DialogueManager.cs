@@ -57,12 +57,6 @@ public class DialogueManager : MonoBehaviour
 
         canvasObj.SetActive(false);
     }
-
-    void Start ()
-    {
-        
-	}
-
     
 
     public void StartDialogue(Dialogue dialogue)
