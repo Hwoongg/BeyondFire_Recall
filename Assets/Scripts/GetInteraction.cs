@@ -58,6 +58,12 @@ public class GetInteraction : MonoBehaviour
         //charState = CharacterState.ONDOOR; // (18.08.06) 카메라 상태 삭제 예정
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        triggerObj = collision.gameObject;
+        triggerInteraction = triggerObj.GetComponent<InteractionSystem>();
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         // ////////////////////////////////

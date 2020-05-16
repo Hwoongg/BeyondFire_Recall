@@ -34,7 +34,7 @@ public class TeleportSystem : InteractionSystem
     {
         TeleportCharacter = GameObject.FindGameObjectWithTag("Player");
         characterMover = TeleportCharacter.GetComponent<CharacterMover>();
-        if (DesTransform) // 목적지 없는 경우는 대체 왜있는거지?
+        if (Destination) // 목적지 없는 경우는 대체 왜있는거지?
         {
             DesTransform = Destination.GetComponent<Transform>();
         }
