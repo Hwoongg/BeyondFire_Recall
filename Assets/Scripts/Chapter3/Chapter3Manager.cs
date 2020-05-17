@@ -23,6 +23,7 @@ public class Chapter3Manager : MonoBehaviour {
     {
         FindObjectOfType<Fader>().FadeIn();
         StartCoroutine(MainRoutine());
+        FindObjectOfType<InventorySystem>().CreateO2Gauge();
 	}
 
     IEnumerator MainRoutine()

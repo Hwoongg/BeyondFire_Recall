@@ -34,15 +34,14 @@ public class Chapter1Manager : MonoBehaviour
 
     private void Start()
     {
+        
+        StartCoroutine(ChapterStart());
+        //objFadeEfx.SetActive(true);
+        //fadeEfx.FadeIn();
 
         // 플레이어 인벤토리에 산소통 추가
         invenSys = FindObjectOfType<InventorySystem>();
         invenSys.CreateO2Gauge();
-
-
-        StartCoroutine(ChapterStart());
-        //objFadeEfx.SetActive(true);
-        //fadeEfx.FadeIn();
 
     }
 

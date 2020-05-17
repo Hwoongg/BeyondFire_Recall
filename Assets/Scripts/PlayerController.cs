@@ -9,14 +9,19 @@ public class PlayerController : MonoBehaviour
 
     GameObject controllCanvas;
 
-    private void Start()
+    private void Awake()
     {
         controllCanvas = transform.GetChild(0).gameObject;
-        mover = FindObjectOfType<CharacterMover>();
-        interaction = mover.transform.GetComponentInChildren<GetInteraction>();
 
         // 씬 시작시 스스로 캔버스 활성화.
         controllCanvas.SetActive(true);
+    }
+    private void Start()
+    {
+        
+        mover = FindObjectOfType<CharacterMover>();
+        interaction = mover.transform.GetComponentInChildren<GetInteraction>();
+        
     }
 
     public void InputLeft()
