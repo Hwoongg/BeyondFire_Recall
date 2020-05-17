@@ -7,10 +7,11 @@ using UnityEngine;
 // 생성될때마다 챕터 관리자 클래스에게 자신을 등록합니다.
 // 불의 단계가 점차 줄어드는 기능이 추가됩니다.
 //
-public class Chapter1_FireEfx : FireEfx {
+public class Chapter1_FireEfx : FireEfx
+{
 
-    //Chapter1Manager c1Manager;
 
+    [SerializeField] float lullDelay;
 
     new private void Start()
     {
@@ -32,7 +33,7 @@ public class Chapter1_FireEfx : FireEfx {
         while(true)
         {
             
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(lullDelay);
             //Transform[] childList = transform.GetComponentsInChildren<Transform>();
             for(int i=0; i<4;i++)
             {
