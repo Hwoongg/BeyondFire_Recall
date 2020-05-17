@@ -18,6 +18,7 @@ public class SafeZone : InteractionSystem
     public AnimatorOverrideController IdleAnimator;
 
     private int SafeCount;
+    [SerializeField] string InfoText;
 
     // Use this for initialization
     void Start()
@@ -51,6 +52,13 @@ public class SafeZone : InteractionSystem
         doAction();
     }
 
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        FindObjectOfType<PlaceInfoUI>().TextOn(InfoText);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        FindObjectOfType<PlaceInfoUI>().TextOff();
+    }
 
 }
