@@ -37,6 +37,8 @@ public class eventHelpMinHyuk : InteractionSystem
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
         playerAnimator.runtimeAnimatorController = helpMHAnimator;
+        player.GetComponent<CharacterMover>().beforeState = CharacterMover.CharState.RESCUE;
+        player.GetComponent<CharacterMover>().charState = CharacterMover.CharState.RESCUE;
 
         Destroy(gameObject);
         yield break;

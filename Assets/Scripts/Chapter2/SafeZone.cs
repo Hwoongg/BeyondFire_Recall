@@ -31,10 +31,14 @@ public class SafeZone : InteractionSystem
 
     public override void doAction()
     {
-        playerAnimator.runtimeAnimatorController = IdleAnimator;
-        playerMover.beforeState = CharacterMover.CharState.IDLE;
-        playerMover.charState = CharacterMover.CharState.IDLE;
-        SafeCount++;
+        if (playerMover.charState == CharacterMover.CharState.RESCUE)
+        {
+            playerAnimator.runtimeAnimatorController = IdleAnimator;
+            playerMover.beforeState = CharacterMover.CharState.IDLE;
+            playerMover.charState = CharacterMover.CharState.IDLE;
+            SafeCount++;
+            FindObjectOfType<O2Gauge>().dropIdleParam /= 2;
+        }
     }
 
     public override void upAction()

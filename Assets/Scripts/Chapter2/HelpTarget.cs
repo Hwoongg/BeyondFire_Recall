@@ -9,7 +9,8 @@ public class HelpTarget : InteractionSystem {
 
     public AnimatorOverrideController HelpAnimator;
 
-    public Dialogue dialogue;
+    public Dialogue deadSentence;
+    [SerializeField] Dialogue overMessage;
 
     private float LifeTime;
     public enum State
@@ -37,7 +38,13 @@ public class HelpTarget : InteractionSystem {
         if(state == State.Limit && LifeTime > 120)
         {
             // 구출 불가 대사 출력
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            FindObjectOfType<DialogueManager>().StartDialogue(deadSentence);
+            return;
+        }
+
+        if(player.GetComponent<CharacterMover>().charState == CharacterMover.CharState.RESCUE)
+        {
+            DialogueManager.Instance().StartDialogue(overMessage);
             return;
         }
 
