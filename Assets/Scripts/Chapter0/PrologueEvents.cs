@@ -43,7 +43,7 @@ public class PrologueEvents : MonoBehaviour {
 
     public Dialogue TutoInven;
 
-    
+    [SerializeField] Mission mission;
     
 
     private void Start()
@@ -110,6 +110,7 @@ public class PrologueEvents : MonoBehaviour {
         LibDialogue2.TriggerDialogue();
         yield return new WaitUntil(() => dialogueManager.canvasObj.activeSelf == false);
 
+        FindObjectOfType<Note>().AddMission(mission);
         tutorialPanel.OffLeftRight();
         dialogueManager.textTalker.color = new Color(1, 1, 1);
         dialogueManager.textSentence.color = new Color(1, 1, 1);

@@ -206,6 +206,8 @@ public class InventorySystem : MonoBehaviour
         if (state != State.ENABLE) // 활성화상태가 아니면 종료
             return;
 
+        FindObjectOfType<Note>().Close(); // 노트 닫기
+
         StartCoroutine("CloseInventoryMove");
     }
     // 인벤토리 닫기 본체 코루틴
@@ -408,12 +410,12 @@ public class InventorySystem : MonoBehaviour
     }
 
     // 수첩 호출 함수
-    public void OpenDiary()
+    public void OpenNote()
     {
         objDiaryUI.SetActive(true);
         objDiaryUI.GetComponent<DiaryUI>().MenuOn(0);
     }
-    public void CloseDiary()
+    public void CloseNote()
     {
         objDiaryUI.SetActive(false);
     }

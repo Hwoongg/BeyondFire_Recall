@@ -4059,6 +4059,12 @@ MonoBehaviour:
       \uD638\uCD9C\uB429\uB2C8\uB2E4."
     - "\uC88C\uCE21\uC5D4 \uC0AC\uC6A9\uD615 \uC544\uC774\uD15C, \uC6B0\uCE21\uC5D4
       \uBE44\uC0AC\uC6A9\uD615 \uC544\uC774\uD15C\uC774 \uBC30\uCE58\uB429\uB2C8\uB2E4."
+  mission:
+    name: GoToRest
+    description: "3\uCE35\uC758 \uAD50\uC0AC \uD734\uAC8C\uC2E4\uB85C \uC774\uB3D9\uD558\uC790."
+    isCountable: 0
+    nowCount: 0
+    maxCount: 0
 --- !u!4 &92937138
 Transform:
   m_ObjectHideFlags: 0
@@ -36382,7 +36388,7 @@ Transform:
   m_GameObject: {fileID: 984217161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.626692, y: 0.626692, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.626692, z: 1}
   m_Children: []
   m_Father: {fileID: 112705896}
   m_RootOrder: 1

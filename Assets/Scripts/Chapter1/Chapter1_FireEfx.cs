@@ -9,8 +9,6 @@ using UnityEngine;
 //
 public class Chapter1_FireEfx : FireEfx
 {
-
-
     [SerializeField] float lullDelay;
 
     new private void Start()
