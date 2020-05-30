@@ -20,7 +20,7 @@ public class Ch2MonsterTrigger : MonoBehaviour
 
     bool isActive;
     //AudioSource AudioSource;
-
+    
 
     private void Start()
     {
@@ -46,6 +46,8 @@ public class Ch2MonsterTrigger : MonoBehaviour
         // 이동 불가 상태
         //characterMover.moveType = CharacterMover.MoveType.LOCK;
         //characterMover.myAnimator.SetBool("IsWalk", false);
+
+        FindObjectOfType<Chapter2FirewallEvent>().isReady = false;
 
         // 불릿 타임 연출
         Time.timeScale = 0.3f;

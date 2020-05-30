@@ -9,16 +9,19 @@ public class Chapter2FirewallEvent : InteractionSystem
     // 대화 끝나고 생성될 트리거 프리팹
     public GameObject MonsterTrigger;
 
+    [HideInInspector]public bool isReady;
+
 	// Use this for initialization
 	void Start ()
     {
-		
+        isReady = true;
 	}
 	
 
     public override void doAction()
     {
-        StartCoroutine(FirewallEvent());
+        if(isReady)
+            StartCoroutine(FirewallEvent());
     }
     public override void upAction()
     {
