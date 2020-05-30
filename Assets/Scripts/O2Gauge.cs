@@ -53,6 +53,7 @@ public class O2Gauge : MonoBehaviour {
 	void Start ()
     {
         fGauge = fMaxGauge;
+        GaugePersentage = fGauge / fMaxGauge;
         gaugeSilder = objGauge.GetComponent<Slider>();
         onFire = false;
         dropFireParam = 1.0f;
@@ -100,6 +101,11 @@ public class O2Gauge : MonoBehaviour {
     public void O2GaugePopUp()
     {
 
+    }
+
+    public float GetPercentage()
+    {
+        return GaugePersentage;
     }
 
 }
