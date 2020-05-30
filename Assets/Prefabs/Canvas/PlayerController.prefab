@@ -1197,7 +1197,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &3455498308402217636
 MonoBehaviour:
@@ -3246,7 +3246,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 60f9868421a37054295888c83c74d004, type: 3}
     m_FontSize: 16
-    m_FontStyle: 0
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40

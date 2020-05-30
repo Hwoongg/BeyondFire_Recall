@@ -117,7 +117,8 @@ public class CharacterMover : MonoBehaviour
     {
         IDLE,
         DASH,
-        RESCUE
+        RESCUE,
+        RESCUEDASH
     }
     [HideInInspector] public CharState charState;
     [HideInInspector] public CharState beforeState;
@@ -175,9 +176,13 @@ public class CharacterMover : MonoBehaviour
                 moveSpeed = MoveSpeed * 2;
                 break;
             case CharState.RESCUE:
-                moveSpeed = MoveSpeed * 0.75f;
+                moveSpeed = MoveSpeed * 0.6f;
+                break;
+            case CharState.RESCUEDASH:
+                moveSpeed = MoveSpeed * 1.2f;
                 break;
         }
+        
 
         if (keyRightMove)
         {
@@ -382,13 +387,23 @@ public class CharacterMover : MonoBehaviour
         keyLeftMove = true;
         if (Time.time < InputDelay + 0.3f)
         {
-            if (charState == CharState.RESCUE)
-                return;
+            //if (charState == CharState.RESCUE)
+            //    return;
+
             Debug.Log("대시 활성화");
             IsDash = true;
             beforeState = charState;
-            charState = CharState.DASH;
-            
+
+            if (charState == CharState.RESCUE)
+            {
+
+                charState = CharState.RESCUEDASH;
+            }
+            else
+            {
+                charState = CharState.DASH;
+            }
+
         }
         InputDelay = Time.time;
 
@@ -405,13 +420,22 @@ public class CharacterMover : MonoBehaviour
         keyRightMove = true;
         if (Time.time < InputDelay + 0.3f)
         {
-            if (charState == CharState.RESCUE)
-                return;
+            //if (charState == CharState.RESCUE)
+            //    return;
+
             Debug.Log("대시 활성화");
             IsDash = true;
-
             beforeState = charState;
-            charState = CharState.DASH;
+
+            if (charState == CharState.RESCUE)
+            {
+                
+                charState = CharState.RESCUEDASH;
+            }
+            else
+            {
+                charState = CharState.DASH;
+            }
         }
         InputDelay = Time.time;
     }

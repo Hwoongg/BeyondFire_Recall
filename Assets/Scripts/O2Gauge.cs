@@ -75,17 +75,25 @@ public class O2Gauge : MonoBehaviour {
         switch(characterMover.charState)
         {
             case CharacterMover.CharState.IDLE:
-            case CharacterMover.CharState.RESCUE:
                 dropParam = dropIdleParam;
+                break;
+
+            case CharacterMover.CharState.RESCUE:
+                dropParam = dropIdleParam * 2;
                 break;
 
             case CharacterMover.CharState.DASH:
                 dropParam = dropIdleParam * 2;
                 break;
 
+            case CharacterMover.CharState.RESCUEDASH:
+                dropParam = dropIdleParam * 4;
+                break;
         }
 
         Gauge -= dropParam * Time.deltaTime;
+
+        // Text Update
         persentageText.text = (int)(GaugePersentage * 100) + "%";
     }
 

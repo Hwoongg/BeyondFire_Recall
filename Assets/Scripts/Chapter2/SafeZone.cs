@@ -38,7 +38,7 @@ public class SafeZone : InteractionSystem
             playerMover.beforeState = CharacterMover.CharState.IDLE;
             playerMover.charState = CharacterMover.CharState.IDLE;
             SafeCount++;
-            FindObjectOfType<O2Gauge>().dropIdleParam /= 2;
+            FindObjectOfType<O2Gauge>().dropIdleParam = 1.0f;
         }
     }
 

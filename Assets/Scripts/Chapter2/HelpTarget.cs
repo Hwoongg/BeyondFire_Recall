@@ -56,7 +56,7 @@ public class HelpTarget : InteractionSystem {
         if (FindObjectOfType<InventorySystem>().CheckActiveItem("GasMask"))
         {
             
-            FindObjectOfType<O2Gauge>().dropIdleParam *= 1.2f;
+            FindObjectOfType<O2Gauge>().dropIdleParam = 1.0f;
             FindObjectOfType<InventorySystem>().
                 RemoveItem(ItemSystem.ItemType.ACTIVE, "GasMask");
 

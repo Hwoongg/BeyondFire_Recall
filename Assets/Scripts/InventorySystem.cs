@@ -9,7 +9,7 @@ using UnityEngine.UI;
 //
 public class ItemSlot
 {
-    public GameObject[] ItemArray = new GameObject[3];
+    public GameObject[] ItemArray;
     //public List<GameObject> ItemArray;
     public int iItemCount;
 
@@ -24,6 +24,7 @@ public class ItemSlot
 
         iItemCount = 0;
         objButtonsUI = new GameObject[5];
+        ItemArray = new GameObject[5];
         
     }
 
@@ -33,6 +34,7 @@ public class ItemSlot
 
         iItemCount = 0;
         objButtonsUI = new GameObject[length];
+        ItemArray = new GameObject[length];
 
     }
 
