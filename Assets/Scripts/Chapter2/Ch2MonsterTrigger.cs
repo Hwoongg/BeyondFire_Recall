@@ -31,6 +31,7 @@ public class Ch2MonsterTrigger : MonoBehaviour
         pannelController = new PannelController();
         pannelController.pannelRenderer = objMonsterPannel.GetComponent<SpriteRenderer>();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isActive)
@@ -43,8 +44,11 @@ public class Ch2MonsterTrigger : MonoBehaviour
     IEnumerator MainRoutine()
     {
         // 이동 불가 상태
-        characterMover.moveType = CharacterMover.MoveType.LOCK;
-        characterMover.myAnimator.SetBool("IsWalk", false);
+        //characterMover.moveType = CharacterMover.MoveType.LOCK;
+        //characterMover.myAnimator.SetBool("IsWalk", false);
+
+        // 불릿 타임 연출
+        Time.timeScale = 0.3f;
 
         //// 괴물 움직임 코루틴 시작
         //StartCoroutine(monsterControl);
@@ -62,7 +66,7 @@ public class Ch2MonsterTrigger : MonoBehaviour
             
             yield return StartCoroutine(pannelController.CustomFade(0.85f, 0.3f));
 
-            yield return new WaitForSeconds(1.0f);
+            //yield return new WaitForSeconds(1.0f);
         }
 
 
@@ -70,7 +74,8 @@ public class Ch2MonsterTrigger : MonoBehaviour
         //StopCoroutine(monsterControl);
 
         // 이동 불가 상태 해제
-        characterMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
+        //characterMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
+        Time.timeScale = 1.0f;
 
         yield break;
     }
