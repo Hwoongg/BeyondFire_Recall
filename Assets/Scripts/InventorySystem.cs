@@ -114,9 +114,6 @@ public class InventorySystem : MonoBehaviour
         imageLightPanel = btnLightPanel.GetComponent<Image>();
         
 
-        
-
-
         // 슬롯 패널의 이미지 컴포넌트 참조 취득
         // 슬롯 오브젝트가 자신의 슬롯이미지 오브젝트를 보여질 버튼UI 이미지 컴포넌트에 링크
         // ex) 액티브 0번 버튼 UI의 이미지 = 액티브 0번슬롯 오브젝트의 슬롯이미지
@@ -128,6 +125,14 @@ public class InventorySystem : MonoBehaviour
         // 중복 실행 방지 코드
         if (state != State.DISABLE) // DISABLE 일때만 실행
             return;
+
+        // 서브캠 CG 다 꺼버리기
+        CutSceneManager csm = FindObjectOfType<CutSceneManager>();
+        if(csm)
+        {
+            csm.DisableSubCG();
+        }
+        
 
         StartCoroutine(OpenInventoryMove());
     }

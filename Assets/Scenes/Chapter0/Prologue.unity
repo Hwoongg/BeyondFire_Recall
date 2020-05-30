@@ -22538,6 +22538,7 @@ GameObject:
   - component: {fileID: 610904836}
   - component: {fileID: 610904835}
   - component: {fileID: 610904834}
+  - component: {fileID: 610904837}
   m_Layer: 5
   m_Name: Canvas_CutScene
   m_TagString: Untagged
@@ -22558,7 +22559,7 @@ RectTransform:
   m_Children:
   - {fileID: 1431589015}
   - {fileID: 860249174}
-  - {fileID: 546008162}
+  - {fileID: 885145073}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22625,8 +22626,20 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
   m_TargetDisplay: 0
+--- !u!114 &610904837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610904832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a635ab98835d294a8ad237909bd3dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &612034608
 GameObject:
   m_ObjectHideFlags: 0
@@ -29431,7 +29444,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 610904833}
+    m_TransformParent: {fileID: 885145073}
     m_Modifications:
     - target: {fileID: 1766163273735148, guid: 56f890eb9b9b1ba4498514a43436e04a, type: 3}
       propertyPath: m_IsActive
@@ -29479,7 +29492,7 @@ PrefabInstance:
     - target: {fileID: 224960426267135866, guid: 56f890eb9b9b1ba4498514a43436e04a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224960426267135866, guid: 56f890eb9b9b1ba4498514a43436e04a,
         type: 3}
@@ -32472,6 +32485,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &885145072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 885145073}
+  m_Layer: 5
+  m_Name: SubCG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &885145073
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885145072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 546008162}
+  m_Father: {fileID: 610904833}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &891906688
 PrefabInstance:
   m_ObjectHideFlags: 0
