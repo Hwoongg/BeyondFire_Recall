@@ -121,4 +121,16 @@ public class Note : MonoBehaviour
         // 알림 효과 끄기
         // ...
     }
+
+    public void CountUp(string _name)
+    {
+        for(int i=0; i<missionSlots.Length; i++)
+        {
+            if (missionSlots[i].GetMission() == null)
+                continue;
+
+            if (_name == missionSlots[i].GetMission().name)
+                missionSlots[i].CountUp();
+        }
+    }
 }

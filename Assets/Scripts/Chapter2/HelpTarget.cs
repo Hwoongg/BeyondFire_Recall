@@ -63,10 +63,11 @@ public class HelpTarget : InteractionSystem {
         }
         else
         {
-            FindObjectOfType<O2Gauge>().dropIdleParam *= 2;
+            FindObjectOfType<O2Gauge>().dropIdleParam = 2.0f;
         }
 
         player.GetComponent<CharacterMover>().IconStateClear();
+        
         gameObject.SetActive(false);
     }
 

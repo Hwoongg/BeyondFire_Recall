@@ -12,7 +12,7 @@ public class SafeZone : InteractionSystem
 
     private GameObject player;
     private Animator playerAnimator;
-    private CharacterMover playerMover;
+    protected CharacterMover playerMover;
 
 
     public AnimatorOverrideController IdleAnimator;
@@ -21,7 +21,7 @@ public class SafeZone : InteractionSystem
     [SerializeField] string InfoText;
 
     // Use this for initialization
-    void Start()
+    public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerAnimator = player.GetComponent<Animator>();
