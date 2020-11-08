@@ -16219,6 +16219,25 @@ MonoBehaviour:
     sentences:
     - "2\uCE35 \uAD50\uBB34\uC2E4\uB85C \uBA3C\uC800 \uC774\uB3D9\uD558\uC5EC \uC5F4\uC1E0\uB97C
       \uCC3E\uC740 \uB4A4,\n1\uCE35\uC5D0 \uC788\uB294 \uBCF4\uAC74\uC2E4\uC744 \uCC3E\uC544\uAC00\uBD05\uC2DC\uB2E4."
+  missionKey:
+    name: FindKey
+    description: "2\uCE35 \uAD50\uBB34\uC2E4\uC758 \uC5F4\uC1E0\uD568\uC5D0\uC11C
+      \uC5F4\uC1E0\uB97C \uC5BB\uC790."
+    isCountable: 0
+    nowCount: 0
+    maxCount: 0
+  missionMH:
+    name: 
+    description: "1\uCE35 \uBCF4\uAC74\uC2E4\uC758 \uC124\uBBFC\uD601 \uC120\uC0DD\uB2D8\uC5D0\uAC8C
+      \uAC00\uC790."
+    isCountable: 0
+    nowCount: 0
+    maxCount: 0
+  reqOverDlg:
+    name: 
+    sprNPCImage: {fileID: 21300088, guid: 86283039f64c73749aaba67d1e01a54c, type: 3}
+    sentences:
+    - "\uC8FC\uC784 \uC120\uC0DD\uB2D8\uC740 \uB2E4\uB978 \uC77C\uB85C \uBC14\uBE60\uBCF4\uC778\uB2E4..."
 --- !u!61 &462254400
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32814,6 +32833,11 @@ MonoBehaviour:
       \uB2E4 \uC788\uB2E4"
     - "\uC5B4\uB514\uBCF4\uC790... 2\uCE35 EPS\uC2E4... 3\uCE35 \uCC3D\uACE0.... AV\uC2E4...?\n\uC544,
       \uADF8\uB798 \uC5EC\uAE30\uC788\uB2E4 \uC9C0\uD558 1\uCE35 \uCC3D\uACE0 \uC5F4\uC1E0!"
+  itemOverDlg:
+    name: 
+    sprNPCImage: {fileID: 21300088, guid: 86283039f64c73749aaba67d1e01a54c, type: 3}
+    sentences:
+    - "\uC5F4\uC1E0\uB294 \uC774\uBBF8 \uC5BB\uC5C8\uB2E4."
   objPrologueEvent: {fileID: 92937136}
 --- !u!61 &896832185
 BoxCollider2D:

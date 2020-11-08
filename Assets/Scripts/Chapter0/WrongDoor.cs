@@ -26,7 +26,7 @@ public class WrongDoor : InteractionSystem
     public RuntimeAnimatorController changeAnimator;
     private Animator playerAnimator;
 
-
+    public Dialogue notHaveKeyDlg;
     // Use this for initialization
     void Start()
     {
@@ -42,6 +42,10 @@ public class WrongDoor : InteractionSystem
         {
             Debug.Log("아이템 체크 성공");
             StartCoroutine("NextEventSetting");
+        }
+        else
+        {
+            DialogueManager.Instance().StartDialogue(notHaveKeyDlg);
         }
 
     }

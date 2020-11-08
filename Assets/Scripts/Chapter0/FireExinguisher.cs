@@ -6,6 +6,7 @@ public class FireExinguisher : InteractionSystem {
 
     // 소화기 UI
     public GameObject FireExinUI;
+    bool isCheck = false;
 
     private void Update()
     {
@@ -14,7 +15,13 @@ public class FireExinguisher : InteractionSystem {
     public override void doAction()
     {
         // 소화기 UI 활성화
-        FireExinUI.SetActive(true);
+        if(FireExinUI)
+            FireExinUI.SetActive(true);
+        if (!isCheck)
+        {
+            FindObjectOfType<Note>().CountUp("CheckFireEx");
+            isCheck = true;
+        }
     }
 
     public override void upAction()
@@ -29,6 +36,9 @@ public class FireExinguisher : InteractionSystem {
     private void OnTriggerExit2D(Collider2D collision)
     {
         // 소화기 UI 비활성화
-        FireExinUI.SetActive(false);
+        if (FireExinUI)
+        {
+            FireExinUI.SetActive(false);
+        }
     }
 }

@@ -5,10 +5,16 @@ using UnityEngine;
 public class KeyBox : ItemSystem {
 
     public Dialogue dialogue;
+    public Dialogue itemOverDlg;
     public GameObject objPrologueEvent;
     private PrologueEvents prologueEvents;
+    bool isItemDrop = false;
 
-    
+    NPC_JooIm jooim;
+    private void Start()
+    {
+        jooim = FindObjectOfType<NPC_JooIm>();
+    }
     public override void doAction()
     {
 
@@ -28,31 +34,58 @@ public class KeyBox : ItemSystem {
 
     IEnumerator KeyBoxEvent()
     {
-        prologueEvents = objPrologueEvent.GetComponent<PrologueEvents>();
-        FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", true);
-        DialogueManager.Instance().StartDialogue(dialogue);
-        yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
+        // 이미 열쇠를 뱉었거나 주임에게 퀘스트를 받지 않았다면
+        if (isItemDrop || !jooim.isReqOver)
+        {
+            DialogueManager.Instance().StartDialogue(itemOverDlg);
+        }
+        else
+        {
+            prologueEvents = objPrologueEvent.GetComponent<PrologueEvents>();
+            FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", true);
+            DialogueManager.Instance().StartDialogue(dialogue);
+            yield return new WaitUntil(() => DialogueManager.Instance().canvasObj.activeSelf == false);
 
-        yield return StartCoroutine(prologueEvents.InvenTutorial());
+            yield return StartCoroutine(prologueEvents.InvenTutorial());
 
-        // 아이템 타입을 체크하여 해당 타입에 맞는 슬롯에 들어갈 함수 호출
-        //inventorySystem.AddItem(this);
-        FindObjectOfType<InventorySystem>().AddItem(this);
-        //switch (itemType)
-        //{
-        //    case ItemType.ACTIVE:
-        //        inventorySystem.AddItem(gameObject, inventorySystem.ActiveSlot);
-        //        break;
+            // 아이템 타입을 체크하여 해당 타입에 맞는 슬롯에 들어갈 함수 호출
+            //inventorySystem.AddItem(this);
+            var n = FindObjectOfType<Note>();
+            if (n)
+            {
+                n.RemoveMission("FindKey");
 
-        //    case ItemType.PASSIVE:
-        //        inventorySystem.AddItem(gameObject, inventorySystem.PassiveSlot);
-        //        break;
-        //}
-        Debug.Log("아이템 " + gameObject.name + " 습득");
+                // 주임에게 퀘스트 받은 적 있어야만 창고진행퀘 얻음
+                if (FindObjectOfType<NPC_JooIm>().isReqOver) 
+                {
+                    n.AddMission("GoToStore");
+                }
+            }
+            var itemSys = FindObjectOfType<InventorySystem>();
+            if (itemSys)
+            {
+                if (!isItemDrop)
+                {
+                    itemSys.AddItem(this);
+                    isItemDrop = true;
+                }
+            }
+            //switch (itemType)
+            //{
+            //    case ItemType.ACTIVE:
+            //        inventorySystem.AddItem(gameObject, inventorySystem.ActiveSlot);
+            //        break;
 
-        gameObject.SetActive(true);
+            //    case ItemType.PASSIVE:
+            //        inventorySystem.AddItem(gameObject, inventorySystem.PassiveSlot);
+            //        break;
+            //}
+            Debug.Log("아이템 " + gameObject.name + " 습득");
 
-        FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", false);
+            gameObject.SetActive(true);
+
+            FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", false);
+        }
         yield break;
     }
 }
