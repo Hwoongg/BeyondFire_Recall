@@ -8,20 +8,21 @@ using UnityEngine;
 public class eventHelpMinHyuk : InteractionSystem
 {
     public Dialogue dialogue;
+    public Dialogue overMessage;
 
     public GameObject player;
     private Animator playerAnimator;
 
     public AnimatorOverrideController helpMHAnimator;
-
-	// Use this for initialization
-	void Start () {
+    
+	void Start ()
+    {
         playerAnimator = player.GetComponent<Animator>();
     }
 
     public override void doAction()
     {
-        StartCoroutine("HelpMHEvent");
+        StartCoroutine(HelpMHEvent());
     }
     public override void upAction()
     {
@@ -33,14 +34,21 @@ public class eventHelpMinHyuk : InteractionSystem
     }
     IEnumerator HelpMHEvent()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        DialogueManager.Instance().StartDialogue(dialogue);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
-        playerAnimator.runtimeAnimatorController = helpMHAnimator;
-        player.GetComponent<CharacterMover>().beforeState = CharacterMover.CharState.RESCUE;
-        player.GetComponent<CharacterMover>().charState = CharacterMover.CharState.RESCUE;
+        if (player.GetComponent<CharacterMover>().charState != CharacterMover.CharState.RESCUE)
+        {
+            playerAnimator.runtimeAnimatorController = helpMHAnimator;
+            player.GetComponent<CharacterMover>().beforeState = CharacterMover.CharState.RESCUE;
+            player.GetComponent<CharacterMover>().charState = CharacterMover.CharState.RESCUE;
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
+        else
+        {
+            DialogueManager.Instance().StartDialogue(overMessage);
+        }
         yield break;
     }
 }

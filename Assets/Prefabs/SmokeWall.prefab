@@ -54,6 +54,7 @@ MonoBehaviour:
     sentences:
     - "\uC55E\uC774 \uBCF4\uC774\uC9C0 \uC54A\uC544 \uC9C0\uB098\uAC08 \uC218 \uC5C6\uB2E4..
       \uBC30\uC5F0\uCC28\uC758 \uC9C0\uC6D0\uC744 \uAE30\uB2E4\uB824\uC57C \uD55C\uB2E4."
+  moveSpeed: 1
 --- !u!61 &5821452476668964374
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 1.5}
+  m_Size: {x: 0.3, y: 1.5}
   m_EdgeRadius: 0
 --- !u!1001 &5821452476883613619
 PrefabInstance:

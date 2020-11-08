@@ -7,7 +7,15 @@ public class Ch3_EndTrigger : InteractionSystem {
 
     public override void doAction()
     {
-        StartCoroutine(Routine());
+        var mover = FindObjectOfType<CharacterMover>();
+        if(mover)
+        {
+            if(mover.charState == CharacterMover.CharState.RESCUE)
+            {
+                StartCoroutine(Routine());
+            }
+        }
+        
     }
 
     public override void upAction()

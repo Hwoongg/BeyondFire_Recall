@@ -5,6 +5,7 @@ using UnityEngine;
 public class eventToiletStudent : InteractionSystem
 {
     public Dialogue dialogue;
+    public Dialogue dialogue2;
 
     public override void doAction()
     {
@@ -26,6 +27,10 @@ public class eventToiletStudent : InteractionSystem
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue2);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
+
+        FindObjectOfType<Note>().CountUp("Resque");
 
         DestroyObject(gameObject);
         yield break;

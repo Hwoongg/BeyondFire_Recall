@@ -22,7 +22,8 @@ public class Chapter1Manager : MonoBehaviour
     DialogueManager dm;
     
     InventorySystem invenSys;
-
+    Note note;
+    [SerializeField] NormalDoorInteraction avDoor;
     private void Awake()
     {
         FireLull = false;
@@ -34,7 +35,7 @@ public class Chapter1Manager : MonoBehaviour
 
     private void Start()
     {
-        
+        GameManager.Instance().SetNowScene();
         StartCoroutine(ChapterStart());
         //objFadeEfx.SetActive(true);
         //fadeEfx.FadeIn();
@@ -42,7 +43,8 @@ public class Chapter1Manager : MonoBehaviour
         // 플레이어 인벤토리에 산소통 추가
         invenSys = FindObjectOfType<InventorySystem>();
         invenSys.CreateO2Gauge();
-
+        note = FindObjectOfType<Note>();
+        
     }
 
     public void StartFireLull()
@@ -82,6 +84,8 @@ public class Chapter1Manager : MonoBehaviour
         yield return StartCoroutine(PartnerEvent());
 
         playerMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
+        note.AddMission("Resque");
+        avDoor.enabled = false;
         yield break;
     }
 

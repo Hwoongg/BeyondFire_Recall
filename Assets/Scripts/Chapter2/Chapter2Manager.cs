@@ -19,9 +19,11 @@ public class Chapter2Manager : MonoBehaviour {
     public Vector3 saveVector3;
     public GameObject High;
     public bool walkTime = false;
+    
 
-	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        GameManager.Instance().SetNowScene();
         isFading = false;
         fadeEfx = objFadeEfx.GetComponent<FadeEffect>();
 

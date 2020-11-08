@@ -13,6 +13,7 @@ public class HelpTarget : InteractionSystem {
     [SerializeField] Dialogue overMessage;
 
     private float LifeTime;
+    [SerializeField] float timeLimit = 120;
     public enum State
     {
         Normal,
@@ -24,8 +25,11 @@ public class HelpTarget : InteractionSystem {
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerAnimator = player.GetComponent<Animator>();
-        LifeTime = 0;
+        if (player)
+        {
+            playerAnimator = player.GetComponent<Animator>();
+            LifeTime = 0;
+        }
     }
     private void Update()
     {
@@ -35,7 +39,7 @@ public class HelpTarget : InteractionSystem {
     public override void doAction()
     {
         // 체류시간이 120이 넘어가면 구조할 수 없다.
-        if(state == State.Limit && LifeTime > 120)
+        if(state == State.Limit && LifeTime > timeLimit)
         {
             // 구출 불가 대사 출력
             FindObjectOfType<DialogueManager>().StartDialogue(deadSentence);

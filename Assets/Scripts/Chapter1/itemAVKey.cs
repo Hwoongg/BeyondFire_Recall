@@ -6,13 +6,15 @@ public class itemAVKey : ItemSystem
 {
     public Dialogue dialogue;
 
+    bool isItemDrop = false;
+
     private void Start() // 부모의 Start와의 관계 명확히 할 것
     {
         ItemName = "AVKey";
     }
     public override void doAction()
     {
-        StartCoroutine("AVKeyEvent");
+        StartCoroutine(AVKeyEvent());
     }
 
     public override void upAction()
@@ -27,16 +29,19 @@ public class itemAVKey : ItemSystem
 
     IEnumerator AVKeyEvent()
     {
-        FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", true);
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
+        if (!isItemDrop)
+        {
+            isItemDrop = true;
+            FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", true);
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
 
-        FindObjectOfType<InventorySystem>().AddItem(this);
+            FindObjectOfType<InventorySystem>().AddItem(this);
+            gameObject.SetActive(true);
 
-        gameObject.SetActive(true);
-
-        FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", false);
+            FindObjectOfType<CharacterMover>().myAnimator.SetBool("IsBack", false);
+        }
         yield break;
     }
 }

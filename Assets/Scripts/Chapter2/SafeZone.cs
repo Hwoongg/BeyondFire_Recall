@@ -20,6 +20,7 @@ public class SafeZone : InteractionSystem
     private int SafeCount;
     [SerializeField] string InfoText;
 
+    Note note;
     // Use this for initialization
     public void Start()
     {
@@ -28,6 +29,8 @@ public class SafeZone : InteractionSystem
         playerMover = player.GetComponent<CharacterMover>();
 
         SafeCount = 0;
+
+        note = FindObjectOfType<Note>();
     }
 
     public override void doAction()
@@ -39,6 +42,7 @@ public class SafeZone : InteractionSystem
             playerMover.charState = CharacterMover.CharState.IDLE;
             SafeCount++;
             FindObjectOfType<O2Gauge>().dropIdleParam = 1.0f;
+            note.CountUp("Resque");
         }
     }
 

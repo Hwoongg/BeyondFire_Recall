@@ -244,8 +244,14 @@ public class CameraSystem : MonoBehaviour
         // -> 불가능, TeleportSystem의 자료형으로 참조해야한다.
 
         // playerInteraction의 현재 닿아있는 오브젝트의 TeleportSystem 컴포넌트 참조...
-        TeleportSystem telSystem = playerInteraction.triggerInteraction.GetComponent<TeleportSystem>();
 
+        if (!playerInteraction.triggerInteraction)
+        {
+            return;
+        }
+
+        TeleportSystem telSystem = playerInteraction.triggerInteraction.GetComponent<TeleportSystem>();
+        
         // 참조한 TeleprtSystem 컴포넌트의 도착지 좌표를 대입한다! y값은 +2.7f 상대좌표
         //beyondCameraObj.transform.position = new Vector3(telSystem.Destination.transform.position.x,
         //    telSystem.Destination.transform.position.y + 0.9f, -10);

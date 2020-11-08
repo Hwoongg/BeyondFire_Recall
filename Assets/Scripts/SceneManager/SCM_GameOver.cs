@@ -46,6 +46,8 @@ public class SCM_GameOver : MonoBehaviour
             Debug.Log("Last Scene Is Notihing");
             return;
         }
+
+        SceneManager.LoadScene(sceneName);
     }
 
     public void MainMenuEvent()

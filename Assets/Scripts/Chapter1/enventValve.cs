@@ -44,6 +44,7 @@ public class enventValve : InteractionSystem {
 
         // 매니저에서 화재 진압상태로 전환
         FindObjectOfType<Chapter1Manager>().StartFireLull();
+        FindObjectOfType<Note>().RemoveMission("FindAVKey");
 
     }
 }

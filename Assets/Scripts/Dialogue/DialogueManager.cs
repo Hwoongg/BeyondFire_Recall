@@ -24,6 +24,9 @@ public class DialogueManager : MonoBehaviour
     GameObject canvasPrf; 
     [HideInInspector] public GameObject canvasObj; // 참조부분 너무 많아서 변경어려움
     DialogueBox dialogueBox;
+
+    bool isTyping = false;
+    [HideInInspector] public bool isSkip = false;
     
     static public DialogueManager Instance()
     {
@@ -84,32 +87,51 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if(sentences.Count == 0)
+        if (!isTyping)
         {
-            EndDialogue();
-            return;
+            if (sentences.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
+            
+            string sentence = sentences.Dequeue();
+
+            //Debug.Log(sentence);
+
+            // 일반 출력
+            //dialogueText.text = sentence;
+
+            // 한글자씩 출력
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(sentence));
         }
-
-        string sentence = sentences.Dequeue();
-
-        //Debug.Log(sentence);
-
-        // 일반 출력
-        //dialogueText.text = sentence;
-
-        // 한글자씩 출력
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        else
+        {
+            isSkip = true;
+        }
     }
 
     IEnumerator TypeSentence(string sentence)
     {
+        isTyping = true;
         textSentence.text = "";
         foreach(char letter in sentence.ToCharArray())
         {
-            textSentence.text += letter;
+            if (isSkip)
+            {
+                // 문장 즉시 완성
+                textSentence.text = sentence;
+                isSkip = false;
+                break;
+            }
+            else
+            {
+                textSentence.text += letter;
+            }
             yield return null;
         }
+        isTyping = false;
     }
 
     void EndDialogue()

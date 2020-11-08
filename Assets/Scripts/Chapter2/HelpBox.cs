@@ -33,8 +33,9 @@ public class HelpBox : InteractionSystem
     {
         nowState = State.CoverOn;
         isLooping = false;
-        imgCover = cover.GetComponent<Image>();
-	}
+        if(cover)
+            imgCover = cover.GetComponent<Image>();
+    }
 	
 
     // 문짝 열기 이벤트

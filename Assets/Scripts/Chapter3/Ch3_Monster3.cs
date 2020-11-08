@@ -13,6 +13,8 @@ public class Ch3_Monster3 : MonoBehaviour {
     Animator Monsteranimator;
     AudioSource Audio;
 
+    bool isOnce = false;
+
     private void Start()
     {
         this.Audio = gameObject.GetComponent<AudioSource>();
@@ -26,8 +28,12 @@ public class Ch3_Monster3 : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!Looping)
-            StartCoroutine(MonsterFade());
+        if (!isOnce)
+        {
+            if (!Looping)
+                StartCoroutine(MonsterFade());
+            isOnce = true;
+        }
     }
     
 

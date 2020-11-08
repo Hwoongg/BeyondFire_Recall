@@ -15,7 +15,7 @@ public class GetInteraction : MonoBehaviour
     public GameObject Character;
 
     // 트리거 발생된 오브젝트와 상호작용 시스템 컴포넌트
-    private GameObject triggerObj;
+    [HideInInspector] public GameObject triggerObj;
 
     [HideInInspector]
     public InteractionSystem triggerInteraction; // (18.07.30) public 전환, 카메라쪽에서 사용됩니다.

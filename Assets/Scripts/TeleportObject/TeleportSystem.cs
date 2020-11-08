@@ -33,14 +33,16 @@ public class TeleportSystem : InteractionSystem
     public void Start()
     {
         TeleportCharacter = GameObject.FindGameObjectWithTag("Player");
-        characterMover = TeleportCharacter.GetComponent<CharacterMover>();
-        if (Destination) // 목적지 없는 경우는 대체 왜있는거지?
+        if (TeleportCharacter)
         {
-            DesTransform = Destination.GetComponent<Transform>();
+            characterMover = TeleportCharacter.GetComponent<CharacterMover>();
+            if (Destination) // 목적지 없는 경우는 대체 왜있는거지?
+            {
+                DesTransform = Destination.GetComponent<Transform>();
+            }
+            cameraSystem = GameObject.FindObjectOfType<CameraSystem>();
+            characterAnimator = TeleportCharacter.GetComponent<Animator>();
         }
-        cameraSystem = GameObject.FindObjectOfType<CameraSystem>();
-        characterAnimator = TeleportCharacter.GetComponent<Animator>();
-
     }
 
 

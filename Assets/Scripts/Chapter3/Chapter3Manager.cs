@@ -14,6 +14,7 @@ public class Chapter3Manager : MonoBehaviour {
     
 
     public Dialogue dialogue;
+    public Dialogue dialogue2;
     private void Awake()
     {
 
@@ -21,6 +22,8 @@ public class Chapter3Manager : MonoBehaviour {
 
     void Start ()
     {
+        GameManager.Instance().SetNowScene();
+
         FindObjectOfType<Fader>().FadeIn();
         StartCoroutine(MainRoutine());
         FindObjectOfType<InventorySystem>().CreateO2Gauge();
@@ -49,7 +52,17 @@ public class Chapter3Manager : MonoBehaviour {
         DialogueManager.Instance().StartDialogue(dialogue);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
 
+        DialogueManager.Instance().StartDialogue(dialogue2);
+        DialogueManager.Instance().isSkip = true;
+
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().canvasObj.activeSelf == false);
         playerMover.moveType = CharacterMover.MoveType.COMMANDMOVE;
+
+        var n = FindObjectOfType<Note>();
+        if(n)
+        {
+            n.AddMission("Resque");
+        }
         yield break;
     }
 

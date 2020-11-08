@@ -25,7 +25,7 @@ public class HPSystem : MonoBehaviour
             }
         }
     }
-    float MaxHealth;
+    [SerializeField] float MaxHealth = 200;
     float nowHealth;
 
 
@@ -90,7 +90,6 @@ public class HPSystem : MonoBehaviour
     private void Start()
     {
         imgFireDamage = objFireDamage.GetComponent<SpriteRenderer>();
-        MaxHealth = 200;
         Health = MaxHealth;
 
         onFire = false;
