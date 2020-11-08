@@ -7,17 +7,17 @@ public class SceneSelector : MonoBehaviour
 {
     public void OpenChapter0()
     {
-        SceneManager.LoadScene("Prologue");
+        SceneManager.LoadScene("CS_FireEdu");
     }
 
     public void OpenChapter1()
     {
-        SceneManager.LoadScene("Chapter1");
+        SceneManager.LoadScene("Chapter1Start");
     }
 
     public void OpenChapter2()
     {
-        SceneManager.LoadScene("Chapter_2_subway_v3");
+        SceneManager.LoadScene("Ch2_SubwayReady");
     }
 
     public void OpenChapter3()
