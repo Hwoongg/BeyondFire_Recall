@@ -184,4 +184,12 @@ public class Note : MonoBehaviour
                 missionSlots[i].CountUp();
         }
     }
+
+    public void RemoveAllMission()
+    {
+        for(int i=0; i<missionSlots.Length; i++)
+        {
+            missionSlots[i].Remove();
+        }
+    }
 }

@@ -68,6 +68,12 @@ public class WrongDoor : InteractionSystem
         // 페이드 아웃
         fader.FadeOut();
 
+        var n = FindObjectOfType<Note>();
+        if(n)
+        {
+            n.RemoveAllMission();
+        }
+
         yield return new WaitForSeconds(1.0f);
         // 캐릭터 우측 동아리실로 좌표 이동
         playerCharacter.transform.position = new Vector3(63.7f, -7.0f, 0);
