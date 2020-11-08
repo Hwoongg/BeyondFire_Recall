@@ -14,6 +14,7 @@ public class Note : MonoBehaviour
 
     MissionSlot[] missionSlots;
 
+    QuestList questList;
     private void Awake()
     {
         objPageGroup = transform.GetChild(0).gameObject;
@@ -32,6 +33,7 @@ public class Note : MonoBehaviour
     private void Start()
     {
         Close();
+        questList = FindObjectOfType<QuestList>();
     }
 
     // 외부 버튼을 통한 여닫기
@@ -91,8 +93,12 @@ public class Note : MonoBehaviour
 
         // 다 통과되면 슬롯이 다 꽉찬것
         Debug.Log("미션 슬롯이 꽉 찼습니다.");
+    }
 
-
+    // 퀘스트 리스트 통해서 추가
+    public void AddMission(string _name)
+    {
+        AddMission(questList.GetMission(_name));
     }
 
     // 해당 이름의 미션 슬롯을 지운다
@@ -106,6 +112,51 @@ public class Note : MonoBehaviour
             if (miss.name == _name)
             {
                 missionSlots[i].Remove();
+            }
+        }
+
+        SortMissionSlot();
+    }
+
+    public bool CheckMission(string _name)
+    {
+        // 하위 슬롯들에 같은 미션이 있는지 확인
+        for (int i = 0; i < missionSlots.Length; i++)
+        {
+            Mission miss = missionSlots[i].GetMission();
+            if (miss == null) continue;
+
+            if (miss.name == _name)
+            {
+                Debug.Log("중복된 미션이 있습니다.");
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void SortMissionSlot()
+    {
+        for (int i = 0; i < missionSlots.Length; i++)
+        {
+            Mission m1 = missionSlots[i].GetMission();
+            if (m1 == null) // 비었으면
+            {
+                // 뒤쪽거중에
+                for(int j=i+1; j<missionSlots.Length; j++)
+                {
+                    // 있는거 찾아서
+                    Mission m2 = missionSlots[j].GetMission();
+                    if (m2 == null)
+                        continue;
+                    missionSlots[i].Add(m2); // 해당 칸에 추가
+                    missionSlots[j].Remove(); // 이전칸에선 삭제
+                    break;
+                }
+
+                // 뒤쪽에 걸리는게 없다면 정렬 끝
+                break;
             }
         }
     }
