@@ -18,7 +18,7 @@ public class ItemSystem : InteractionSystem
     public Sprite sprSlotImage;
     //public GameObject objInventory;
     //protected InventorySystem inventorySystem;
-
+    [TextArea(3,5)]
     public string ItemInfo;
 
     private void Start()
